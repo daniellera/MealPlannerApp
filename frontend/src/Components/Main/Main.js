@@ -5,6 +5,10 @@ import Register from '../Register/Register'
 import Home from '../Home/Home'
 import Header from '../Header'
 import Footer from '../Footer'
+import Meals from '../Meals'
+import Recipes from '../Recipes'
+import MealPlans from '../MealPlans'
+import GroceryList from '../GroceryList'
 import {addToken, deleteUser} from '../../Redux/actionCreators'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
@@ -34,21 +38,24 @@ class Main extends Component {
     render(){
         return(
             <div>
-                <Header />
-                {this.props.token.token !== undefined ?
+                <Header login={this.props.token.token} handleClick={this.handleLogout}/>
+                {/* {this.props.token.token !== undefined ?
                         <div>
                             <Link to='/home'>Home | </Link>
                             <Link to='/login' onClick={this.handleLogout}>logout</Link> 
                             <Redirect to='/home'/>
-
                         </div>  
                     : 
                         <Link to='/login'>Home | </Link>
-                }
+                } */}
                 <Switch>
                     <Route path='/login' component={() => <Login/>}/>
                     <Route path='/register'component={() => <Register/>}/>
                     <Route path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
+                    <Route path='/meals' component={this.props.token.token !== undefined ? () => <Meals/> : null}/>
+                    <Route path='/recipes' component={this.props.token.token !== undefined ? () => <Recipes/> : null}/>
+                    <Route path='/mealplans' component={this.props.token.token !== undefined ? () => <MealPlans/> : null}/>
+                    <Route path='/grocerylist' component={this.props.token.token !== undefined ? () => <GroceryList/> : null}/>
                     <Redirect to='/login'/>
                 </Switch>
                 <Footer />
