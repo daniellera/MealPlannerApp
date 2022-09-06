@@ -3,6 +3,8 @@ import {Switch, Route, Redirect, Link} from 'react-router-dom'
 import Login from '../Login/Login'
 import Register from '../Register/Register'
 import Home from '../Home/Home'
+import Header from '../Header'
+import Footer from '../Footer'
 import {addToken, deleteUser} from '../../Redux/actionCreators'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
@@ -32,6 +34,7 @@ class Main extends Component {
     render(){
         return(
             <div>
+                <Header />
                 {this.props.token.token !== undefined ?
                         <div>
                             <Link to='/home'>Home | </Link>
@@ -48,6 +51,7 @@ class Main extends Component {
                     <Route path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
                     <Redirect to='/login'/>
                 </Switch>
+                <Footer />
             </div>
         )
     }
