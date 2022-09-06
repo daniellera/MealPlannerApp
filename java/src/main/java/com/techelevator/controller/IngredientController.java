@@ -27,4 +27,5 @@ public class IngredientController {
     public List<Ingredient> getIngredientsFromRecipe(@PathVariable("id") Integer recipeId) {
         return ingredientRepository.findIngredientByRecipeID(recipeId);
     }
+
 }
