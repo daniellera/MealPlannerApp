@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS meal_plan_meal, meal_plan, meal_recipe, ingredients_recipe, recipe_users, meal, ingredients, recipe, users CASCADE;
+DROP TABLE IF EXISTS meal_plan_meal, meal_plan, meal_recipe, ingredients_recipe, users_meal, recipe_users, meal, ingredients, recipe, users CASCADE;
 DROP SEQUENCE IF EXISTS seq_user_id;
 
 CREATE SEQUENCE seq_user_id
@@ -56,6 +56,13 @@ CREATE TABLE meal(
     title varchar (255) NOT NULL,
     description varchar (2000) NOT NULL,
     CONSTRAINT PK_meal PRIMARY KEY (meal_id)
+);
+
+CREATE TABLE users_meal (
+    user_id int NOT NULL,
+    meal_id int NOT NULL,
+    CONSTRAINT PK_users_meal PRIMARY KEY (user_id, meal_id)
+
 );
 
 CREATE TABLE meal_recipe(
@@ -121,6 +128,8 @@ INSERT INTO ingredients (name , toBePurchased) VALUES ('Test ingredients 4, Reci
 INSERT INTO meal(title, description) VALUES ('Test meal 1', 'Long winded description 1');
 INSERT INTO meal(title, description) VALUES ('Test meal 2', 'Long winded description 2');
 
+INSERT INTO users_meal (user_id, meal_id) VALUES ((SELECT user_id FROM users where username = 'user'),(SELECT meal_id FROM meal where title = 'Test meal 1'));
+INSERT INTO users_meal (user_id, meal_id) VALUES ((SELECT user_id FROM users where username = 'user'),(SELECT meal_id FROM meal where title = 'Test meal 2'));
 
 INSERT INTO meal_plan (user_id, name) VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Test meal plan 1');
 
@@ -167,6 +176,7 @@ INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m
 
 INSERT INTO meal_plan_meal (meal_plan_id, meal_id) VALUES ((SELECT meal_plan_id FROM meal_plan p WHERE p.name = 'Test meal plan 1'), (SELECT meal_id FROM meal m WHERE m.title = 'Test meal 2'));
 
+--foreign keys
 
 ALTER TABLE recipe_users ADD CONSTRAINT FK_recipe_users_users FOREIGN KEY (user_id) REFERENCES users(user_id);
 
@@ -187,5 +197,9 @@ ALTER TABLE meal_plan ADD CONSTRAINT FK_meal_plan_meal_users FOREIGN KEY (user_i
 ALTER TABLE meal_plan_meal ADD CONSTRAINT FK_meal_plan_meal_meal_plan FOREIGN KEY (meal_plan_id) REFERENCES meal_plan (meal_plan_id);
 
 ALTER TABLE meal_plan_meal ADD CONSTRAINT FK_meal_plan_meal_meal FOREIGN KEY (meal_id) REFERENCES meal (meal_id);
+
+ALTER TABLE users_meal ADD CONSTRAINT FK_users_meal_users FOREIGN KEY (user_id) REFERENCES users(user_id);
+
+ALTER TABLE users_meal ADD CONSTRAINT FK_users_meal_meal FOREIGN KEY (meal_id) REFERENCES meal (meal_id);
 
 COMMIT TRANSACTION;
