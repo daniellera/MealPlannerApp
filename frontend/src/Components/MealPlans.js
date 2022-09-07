@@ -1,7 +1,13 @@
 import React from 'react';
+import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
-export default function MealPlans() {
+export default function MealPlans(props) {
+    const dummy = ["mealplan", "mealplan", "mealplan"]
+
     return(
-        <div>MealPlans displayed</div>
+        <div>
+            <Link to='/grocerylist'>GroceryList </Link>
+            {dummy.map(mealplan => <p>{mealplan}</p>)}
+        </div>
     );
 }

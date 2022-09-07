@@ -1,7 +1,11 @@
 import React from 'react';
 
-export default function Recipes() {
+export default function Recipes(props) {
+    const dummy = ["recipe", "recipe", "recipe"]
+
     return(
-        <div>Recipes displayed</div>
+        <div>
+            {dummy.map(recipe => <p>{recipe}</p>)}
+        </div>
     );
 }
