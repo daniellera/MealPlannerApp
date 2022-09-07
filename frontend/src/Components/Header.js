@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 export default function Header(props) {
     return (

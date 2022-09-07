@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function MealPlans(props) {
     const dummy = ["mealplan", "mealplan", "mealplan"]
