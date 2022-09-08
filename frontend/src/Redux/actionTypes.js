@@ -1,3 +1,28 @@
 export const ADD_TOKEN = 'ADD_TOKEN';
 export const ADD_USER = 'ADD_USER';
 export const DELETE_USER = 'DELETE_USER';
+
+export const FETCH_INGREDIENT_LIST = 'FETCH_INGREDIENT_LIST';
+export const FETCH_RECIPE_INGREDIENTS = 'FETCH_RECIPE_INGREDIENTS';
+export const ADD_INGREDIENT = 'ADD_INGREDIENT';
+export const EDIT_INGREDIENT = 'EDIT_INGREDIENT';
+export const DELETE_INGREDIENT = 'DELETE_INGREDIENT';
+
+export const FETCH_RECIPE = 'FETCH_RECIPE';
+export const FETCH_RECIPE_LIST = 'FETCH_RECIPE_LIST';
+export const ADD_RECIPE = 'ADD_RECIPE';
+export const EDIT_RECIPE = 'EDIT_RECIPE';
+export const DELETE_RECIPE = 'DELETE_RECIPE';
+
+export const FETCH_MEAL = 'FETCH_MEAL';
+export const FETCH_MEAL_LIST = 'FETCH_MEAL_LIST';
+export const ADD_MEAL = 'ADD_MEAL';
+export const EDIT_MEAL = 'EDIT_MEAL';
+export const DELETE_MEAL = 'DELETE_MEAL';
+
+export const FETCH_MEAL_PLAN = 'FETCH_MEAL_PLAN';
+export const FETCH_MEAL_PLAN_LIST = 'FETCH_MEAL_PLAN_LIST';
+export const ADD_MEAL_PLAN = 'ADD_MEAL_PLAN';
+export const EDIT_MEAL_PLAN = 'EDIT_MEAL_PLAN';
+export const DELETE_MEAL_PLAN = 'DELETE_MEAL_PLAN';
+

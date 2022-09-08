@@ -1,6 +1,21 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import {useDispatch, useSelector} from "react-redux";
+import { withRouter } from 'react-router-dom';
+import { fetchRecipe } from "../Redux/actionCreators"
 
-export default function RecipeCard(props) {
+function RecipeCard(props) {
+
+    const dispatch = useDispatch();
+    const recipe = useSelector(state => state.recipe)
+
+    useEffect(() => {
+        dispatch(fetchRecipe());
+        console.log(recipe)
+    }, [])
+
+
     const dummy = {
         id: 1,
         title: "recipe",
@@ -10,14 +25,16 @@ export default function RecipeCard(props) {
     }
     return(
         <div>
-            <h3>{dummy.title}</h3>
-            <h6>Category: {dummy.dish_type}</h6>
-            <p>{dummy.details}</p>
+            <h3>{recipe.title}</h3>
+            <h6>Category: {recipe.dishType}</h6>
+            <p>{recipe.details}</p>
             <h4>Instructions: </h4>
-            <p>{dummy.instructions}</p>
+            <p>{recipe.instructions}</p>
         </div>
     );
 }
+
+export default withRouter(connect()(RecipeCard));
 
 //     recipe_id serial,
 //     title varchar(50) NOT NULL,
