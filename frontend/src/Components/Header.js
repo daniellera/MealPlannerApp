@@ -3,7 +3,7 @@ import { Redirect, Link } from 'react-router-dom'
 
 export default function Header(props) {
     return (
-        <div>
+        <header>
             {props.login !== undefined ?
                 <div>
                     <Link to='/home'>Home | </Link>
@@ -21,6 +21,6 @@ export default function Header(props) {
             ++Add recipe button on My Recipes page?
             
             */}
-        </div>
+        </header>
     );
 }
