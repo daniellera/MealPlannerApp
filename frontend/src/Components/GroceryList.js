@@ -1,7 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-export default function GroceryList() {
-    const dummy = [{
+export default function GroceryList(props) {
+    const [ingredientsList, setIngredientsList] = React.useState([{
         toBePurchased: true,
         name: "ingredient",
         amount: "1 pinch"
@@ -9,19 +10,36 @@ export default function GroceryList() {
         toBePurchased: true,
         name: "ingredient2",
         amount: "2 pinches"
-    }]
+    }]);
+
+    React.useEffect(() => {}, [ingredientsList])
+
+    // Toggles in array, not database!
+    function toggleToBePurchased(ingredient) {
+        setIngredientsList(prev => ingredientsList.map(element => {
+            if (element.name === ingredient.name) {
+                return {
+                    ...element,
+                    toBePurchased: !element.toBePurchased
+                }
+            } else {
+                return element
+            }
+        }))
+    }
 
     return(
         <div>
-            {dummy.map(ingredient => {
+            {ingredientsList.map(ingredient => {
                 return (
                     <div className="grocery-list-item">
-                        <p>{ingredient.toBePurchased ? "Y" : "N"}</p>
-                        <p>{ingredient.amount}</p>
+                        <p onClick={() => toggleToBePurchased(ingredient)}>{ingredient.toBePurchased ? "Y" : "N"}</p>
+                        <p>{ingredient.amount} </p>
                         <p>{ingredient.name}</p>
                     </div>
                 )
             })}
+            <Link to='/mealplans' className='home-button'>My Meal Plans</Link>
         </div>
     );
 }
