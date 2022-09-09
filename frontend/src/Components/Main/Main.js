@@ -54,7 +54,7 @@ class Main extends Component {
                     <Route path='/register'component={() => <Register/>}/>
                     <Route path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
                     <Route path='/meals' component={this.props.token.token !== undefined ? () => <Meals/> : null}/>
-                    <Route path='/recipes' component={this.props.token.token !== undefined ? () => <RecipeCard /> : null}/>
+                    <Route path='/recipes' component={this.props.token.token !== undefined ? () => <Recipes /> : null}/>
                     <Route path='/mealplans' component={this.props.token.token !== undefined ? () => <MealPlans/> : null}/>
                     <Route path='/grocerylist' component={this.props.token.token !== undefined ? () => <GroceryList/> : null}/>
                     <Redirect to='/login'/>
