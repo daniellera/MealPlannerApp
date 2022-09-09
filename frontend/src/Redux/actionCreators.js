@@ -1,5 +1,6 @@
 import * as ActionTypes from './actionTypes'
 import Axios from "axios"
+import {baseUrl} from "../Shared/baseUrl"
 
 export const addToken = (token) => ({
     type: ActionTypes.ADD_TOKEN,
@@ -15,10 +16,10 @@ export const deleteUser = () => ({
     type: ActionTypes.DELETE_USER
 })
 
-export const fetchRecipe = () => async (dispatch, getState) => {
+export const fetchRecipe = (id) => async (dispatch, getState) => {
 
         const response = await Axios.get(
-            `http://localhost:8081/recipe/1`
+            `${baseUrl}/recipe/${id}`
         );
 
         dispatch({
@@ -26,6 +27,17 @@ export const fetchRecipe = () => async (dispatch, getState) => {
             payload: response.data
         })
 
-        console.log(response.data)
+        
 
     }
+export const fetchIngredients = (id) => async (dispatch, getState) => {
+
+    const response = await Axios.get(
+        `${baseUrl}/ingredients/recipe/${id}`
+    );
+
+    dispatch({
+        type: ActionTypes.FETCH_RECIPE_INGREDIENTS,
+        payload: response.data
+    })
+}
