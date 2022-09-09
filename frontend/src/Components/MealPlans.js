@@ -1,13 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import MealPlanCard from './MealPlanCard';
 
 export default function MealPlans(props) {
-    const dummy = ["mealplan", "mealplan", "mealplan"]
+
+    // replace with fetched data
+    const mealPlanList = [{name: "mealplan1", id: 1}, {name: "mealplan2", id: 2}, {name: "mealplan3", id: 3}]
+
+    const [selected, setSelected] = React.useState({isSelected: false, mealPlan: null})
+
+    React.useEffect(() => {}, [selected])
+
+    function selectMealPlan(mealPlan) {
+        setSelected(prev => ({
+            isSelected: true,
+            mealPlan: mealPlan
+        }))
+    }
 
     return(
         <div>
-            <Link to='/grocerylist'>GroceryList </Link>
-            {dummy.map(mealplan => <p>{mealplan}</p>)}
+            {   selected.isSelected ?
+                <MealPlanCard mealPlan={selected.mealPlan} /> :
+                mealPlanList.map(mealplan => <p onClick={() => selectMealPlan(mealplan)}>{mealplan.name}</p>)
+            }
         </div>
     );
 }
