@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {useDispatch, useSelector} from "react-redux";
 import { withRouter } from 'react-router-dom';
 import { fetchRecipe } from "../Redux/actionCreators"
+import { Link } from 'react-router-dom';
 
 function RecipeCard(props) {
 
@@ -15,14 +16,6 @@ function RecipeCard(props) {
         console.log(recipe)
     }, [])
 
-
-    const dummy = {
-        id: 1,
-        title: "recipe",
-        details: "agliehf jsoifhnail osdfhilauhj",
-        instructions: "Recipe 1 Instructions (Amounts, 1., 2., 3.)",
-        dish_type: "entree"
-    }
     return(
         <div>
             <h3>{recipe.title}</h3>
@@ -30,6 +23,7 @@ function RecipeCard(props) {
             <p>{recipe.details}</p>
             <h4>Instructions: </h4>
             <p>{recipe.instructions}</p>
+            <Link to='/recipes' className='home-button'>My Recipes</Link>
         </div>
     );
 }
