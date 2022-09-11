@@ -16,10 +16,10 @@ export const deleteUser = () => ({
     type: ActionTypes.DELETE_USER
 })
 
-export const fetchRecipe = (id) => async (dispatch, getState) => {
+export const fetchRecipe = (recipeId) => async (dispatch, getState) => {
 
         const response = await Axios.get(
-            `${baseUrl}/recipe/${id}`
+            `http://localhost:8081/recipe/${recipeId}`
         );
 
         dispatch({
@@ -27,17 +27,17 @@ export const fetchRecipe = (id) => async (dispatch, getState) => {
             payload: response.data
         })
 
-        
 
     }
-export const fetchIngredients = (id) => async (dispatch, getState) => {
 
+export const fetchUserRecipes = (userId) => async (dispatch, getState) => {
     const response = await Axios.get(
-        `${baseUrl}/ingredients/recipe/${id}`
-    );
+        `http://localhost:8081/recipe/user-${userId}`
+
+    )
 
     dispatch({
-        type: ActionTypes.FETCH_RECIPE_INGREDIENTS,
+        type: ActionTypes.FETCH_USER_RECIPES,
         payload: response.data
     })
 }
