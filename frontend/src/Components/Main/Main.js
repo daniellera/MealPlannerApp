@@ -7,6 +7,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import Meals from '../Meals'
 import Recipes from '../Recipes'
+import RecipeCard from '../RecipeCard'
 import MealPlans from '../MealPlans'
 import GroceryList from '../GroceryList'
 import {addToken, deleteUser} from '../../Redux/actionCreators'
@@ -54,9 +55,10 @@ class Main extends Component {
                     <Route path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
                     <Route path='/meals' component={this.props.token.token !== undefined ? () => <Meals/> : null}/>
                     <Route path='/recipes' component={this.props.token.token !== undefined ? () => <Recipes /> : null}/>
+                    <Route path='/recipe/:recipeId' component={({match}) => <RecipeCard match={match}/>}/>
                     <Route path='/mealplans' component={this.props.token.token !== undefined ? () => <MealPlans/> : null}/>
                     <Route path='/grocerylist' component={this.props.token.token !== undefined ? () => <GroceryList/> : null}/>
-                    <Redirect to='/login'/>
+                    {/* <Redirect to='/login'/> */}
                 </Switch>
                 <Footer />
             </div>

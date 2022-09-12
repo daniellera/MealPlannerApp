@@ -1,20 +1,26 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import {useDispatch, useSelector} from "react-redux";
-import { withRouter } from 'react-router-dom';
-import { fetchRecipe } from "../Redux/actionCreators"
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 
-function RecipeCard(props) {
+export default function RecipeCard({match}) {
 
-    const dispatch = useDispatch();
-    const recipe = useSelector(state => state.recipe)
+    const recipeId = Number(match.params.recipeId);
 
-    useEffect(() => {
-        dispatch(fetchRecipe());
-        console.log(recipe)
-    }, [])
+    const recipeList = useSelector(state =>
+        state.recipeList)
+
+    const recipe = recipeList.find(recipe => recipe.id === recipeId);
+
+
+    if (!recipe) {
+        return (
+            <div>
+                <h2>Recipe not found!</h2>
+            </div>
+        )
+    }
 
     return(
         <div>
@@ -27,8 +33,6 @@ function RecipeCard(props) {
         </div>
     );
 }
-
-export default withRouter(connect()(RecipeCard));
 
 //     recipe_id serial,
 //     title varchar(50) NOT NULL,
