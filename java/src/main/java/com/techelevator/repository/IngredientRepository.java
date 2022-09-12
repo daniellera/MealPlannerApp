@@ -40,5 +40,16 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
             nativeQuery = true
     )
     void saveToRecipe(Integer recipeId, String name, boolean tobepurchased, double amount);
+
+    @Query(
+            value = "SELECT * from ingredients " +
+            "JOIN ingredients_recipe USING (ingredients_id) " +
+            "JOIN recipe using (recipe_id) " +
+            "JOIN recipe_users using (recipe_id) " +
+            "JOIN users using (user_id) " +
+            "WHERE user_id = ?1 and tobepurchased = true",
+            nativeQuery = true
+    )
+    List<Ingredient> getGroceryList(Integer userId);
 }
 

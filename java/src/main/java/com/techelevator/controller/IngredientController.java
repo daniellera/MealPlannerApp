@@ -28,6 +28,11 @@ public class IngredientController {
     public List<Ingredient> getIngredientsFromRecipe(@PathVariable("id") Integer recipeId) {
         return ingredientRepository.findIngredientByRecipeID(recipeId);
     }
+    @GetMapping("groceryList-{id}")
+    public List<Ingredient> getGroceryList(@PathVariable("id") Integer userId) {
+        return ingredientRepository.getGroceryList(userId);
+    }
+
 
 //    @PutMapping("recipe-{id}")
 //    public Ingredient addIngredientToRecipe(@PathVariable("id") Integer recipeId,
