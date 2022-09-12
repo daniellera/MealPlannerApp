@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 public interface IngredientRepository extends JpaRepository<Ingredient, Integer> {
 
@@ -51,5 +50,15 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
             nativeQuery = true
     )
     List<Ingredient> getGroceryList(Integer userId);
+
+    @Modifying
+    @Query(
+            value="DELETE from ingredients" +
+                    "JOIN ingredients_recipe USING (ingredients_id) " +
+                    "JOIN recipe using (recipe_id) " +
+                    "where recipe_id = 1?",
+            nativeQuery = true
+    )
+    void deleteFromRecipe(Integer recipeId);
 }
 

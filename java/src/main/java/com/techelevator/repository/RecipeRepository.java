@@ -1,8 +1,8 @@
 package com.techelevator.repository;
 
-import com.techelevator.entity.Ingredient;
 import com.techelevator.entity.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -29,4 +29,10 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     )
     List<Recipe> findRecipeByUserId(Integer id);
 
+    @Modifying
+    @Query(
+            value = "DELETE FROM recipe WHERE recipe_id = 1?",
+            nativeQuery = true
+    )
+    void deleteRecipe(Integer recipeId);
 }
