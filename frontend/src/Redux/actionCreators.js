@@ -59,3 +59,14 @@ export const fetchMealList= (userId) => async (dispatch, getState) => {
         payload: response.data
     })
 }
+
+export const fetchMealPlanList= (userId) => async (dispatch, getState) => {
+    const response = await Axios.get(
+        `http://localhost:8081/meal-plan/user-${userId}`
+    )
+
+    dispatch({
+        type: ActionTypes.FETCH_MEAL_PLAN_LIST,
+        payload: response.data
+    })
+}

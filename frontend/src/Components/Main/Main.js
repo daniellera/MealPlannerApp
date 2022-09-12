@@ -10,6 +10,7 @@ import MealCard from '../MealCard'
 import Recipes from '../Recipes'
 import RecipeCard from '../RecipeCard'
 import MealPlans from '../MealPlans'
+import MealPlanCard from '../MealPlanCard'
 import GroceryList from '../GroceryList'
 import {addToken, deleteUser} from '../../Redux/actionCreators'
 import {connect} from 'react-redux'
@@ -59,6 +60,7 @@ class Main extends Component {
                     <Route path='/recipes' component={this.props.token.token !== undefined ? () => <Recipes /> : null}/>
                     <Route path='/recipe/:recipeId' component={({match}) => <RecipeCard match={match}/>}/>
                     <Route path='/mealplans' component={this.props.token.token !== undefined ? () => <MealPlans/> : null}/>
+                    <Route path='/mealplan/:mealPlanId' component={({match}) => <MealPlanCard match={match}/>}/>
                     <Route path='/grocerylist' component={this.props.token.token !== undefined ? () => <GroceryList/> : null}/>
                     {/* <Redirect to='/login'/> */}
                 </Switch>

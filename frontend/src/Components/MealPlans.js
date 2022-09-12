@@ -1,28 +1,40 @@
 import React from 'react';
-import MealPlanCard from './MealPlanCard';
+import {useDispatch, useSelector} from "react-redux";
+import * as actions from "../Redux/actionCreators"
+import { Link } from 'react-router-dom';
 
 export default function MealPlans(props) {
+    
+    const dispatch = useDispatch();
+    const mealPlans = useSelector(state => state.mealPlanList)
 
-    // replace with fetched data
-    const mealPlanList = [{name: "mealplan1", id: 1}, {name: "mealplan2", id: 2}, {name: "mealplan3", id: 3}]
+    React.useEffect(() => {
+        dispatch(actions.fetchMealPlanList(1)); //TODO: remove parameters and use headers to determine user
+        console.log(mealPlans);
+    }, [])
 
-    const [selected, setSelected] = React.useState({isSelected: false, mealPlan: null})
+    const mealPlanList = mealPlans.length ? (
+        mealPlans.map(mealPlan => (
+        <div key={mealPlan.id}>
+            <h5>{mealPlan.name}</h5>
+            <Link
+                to={`/mealplan/${mealPlan.id}`}
+                className='button muted-button'
+                > View MealPlan Details
+            </Link>
+            {console.log(mealPlan.id)}
+            <br /><br />
 
-    React.useEffect(() => {}, [selected])
+        </div>
+        
+    ))) : (
+        <p>No mealPlans yet</p>
 
-    function selectMealPlan(mealPlan) {
-        setSelected(prev => ({
-            isSelected: true,
-            mealPlan: mealPlan
-        }))
-    }
+    )
 
     return(
         <div>
-            {   selected.isSelected ?
-                <MealPlanCard mealPlan={selected.mealPlan} /> :
-                mealPlanList.map(mealplan => <p onClick={() => selectMealPlan(mealplan)}>{mealplan.name}</p>)
-            }
+            {mealPlanList}
         </div>
     );
 }

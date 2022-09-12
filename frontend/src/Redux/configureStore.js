@@ -5,6 +5,7 @@ import {User} from './user'
 import {Recipe} from './recipe'
 import {RecipeList} from './recipeList'
 import {MealList} from './mealList'
+import {MealPlanList} from './mealPlanList'
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -13,7 +14,8 @@ export const ConfigureStore = () => {
             user: User,
             recipe: Recipe,
             recipeList: RecipeList,
-            mealList: MealList
+            mealList: MealList,
+            mealPlanList: MealPlanList
 
         }),
         applyMiddleware(thunk)
