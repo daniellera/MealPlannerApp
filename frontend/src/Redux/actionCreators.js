@@ -48,3 +48,14 @@ export const fetchMealRecipes = (mealId) => async (dispatch, getState) => {
     )
 
 }
+
+export const fetchMealList= (userId) => async (dispatch, getState) => {
+    const response = await Axios.get(
+        `http://localhost:8081/meal/user-${userId}`
+    )
+
+    dispatch({
+        type: ActionTypes.FETCH_MEAL_LIST,
+        payload: response.data
+    })
+}
