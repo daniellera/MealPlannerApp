@@ -12,8 +12,8 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
 
     @Query(
             value="SELECT m.* FROM meal m " +
-                    "JOIN meal_users mu ON r.meal_id = mu.meal_id " +
-                    "WHERE mu.user_id = 1? " +
+                    "JOIN users_meal mu ON m.meal_id = mu.meal_id " +
+                    "WHERE mu.user_id = ? " +
                     "ORDER By m.meal_id DESC",
             nativeQuery=true
     )
