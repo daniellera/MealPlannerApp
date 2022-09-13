@@ -46,6 +46,10 @@ export const fetchMealRecipes = (mealId) => async (dispatch, getState) => {
         `http://localhost:8081/recipe/meal-${mealId}`
 
     )
+    dispatch({
+        type: ActionTypes.FETCH_MEAL_RECIPES,
+        payload: response.data
+    })
 
 }
 

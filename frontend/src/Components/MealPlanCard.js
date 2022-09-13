@@ -23,7 +23,7 @@ export default function MealPlanCard({match}) {
     return(
         <div>
             <h3>{mealPlan.name}</h3>
-            {/* TODO: Display mealPlan recipes here */} 
+            {/* TODO: Display mealPlan meals here */} 
             <Link to='/mealplans' className='home-button'>My Meal Plans</Link>
         </div>
     );

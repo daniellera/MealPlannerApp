@@ -1,40 +1,30 @@
 import React from 'react';
+import { useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import * as actions from "../Redux/actionCreators"
 import { Link } from 'react-router-dom';
 
 export default function Recipes(props) {
-    // const recipes = [
-    //     {
-    //         id: 1,
-    //         title: "recipe1",
-    //         details: "umm",
-    //         dishType: "Vegan"
-    //     },
-    //     {
-    //         id: 2,
-    //         title: "recipe2",
-    //         details: "yeah",
-    //         dishType: "Vegetarian"
-    //     },
-    //     {
-    //         id: 3,
-    //         title: "recipe3",
-    //         details: "okay",
-    //         dishType: null
-    //     }
-    // ]
 
     const dispatch = useDispatch();
-    const recipes = useSelector(state => state.recipeList)
+    const recipeList = useSelector(state => state.recipeList)
 
-    React.useEffect(() => {
-        dispatch(actions.fetchUserRecipes(1)); //TODO: remove parameters and use headers to determine user
-        console.log(recipes);
+    useEffect(() => {
+        switch (props.recipes) {
+            case "user":
+                return dispatch(actions.fetchUserRecipes(1)); //TODO: remove parameters and use headers to determine user;
+            
+            case "meal":
+                return dispatch(actions.fetchMealRecipes(props.mealId)); 
+
+            default:
+                return null;
+        }
+
     }, [])
 
-    const recipeList = recipes.length ? (
-        recipes.map(recipe => (
+    const recipeDisplay = recipeList.length ? (
+        recipeList.map(recipe => (
         <div key={recipe.id}>
             <h3>{recipe.title}</h3>
             <p>{recipe.dishType}</p>
@@ -44,7 +34,6 @@ export default function Recipes(props) {
                 > View Recipe
             </Link>
             {console.log(recipe.id)}
-            <br /><br />
 
         </div>
         
@@ -55,7 +44,8 @@ export default function Recipes(props) {
 
     return(
         <div>
-            {recipeList}
+            {recipeDisplay}
         </div>
     );
+
 }

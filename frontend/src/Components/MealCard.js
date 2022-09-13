@@ -1,6 +1,9 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import Recipes from './Recipes';
+import * as actions from "../Redux/actionCreators"
 
 export default function MealCard({match}) {
 
@@ -23,7 +26,7 @@ export default function MealCard({match}) {
     return(
         <div>
             <h3>{meal.title}</h3>
-            {/* TODO: Display meal recipes here */}
+            <Recipes recipes={meal} mealId={mealId}/>
             <Link to='/meals' className='home-button'>My Meals</Link>
         </div>
     );
