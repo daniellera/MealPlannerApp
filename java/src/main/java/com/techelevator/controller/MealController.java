@@ -29,4 +29,9 @@ public class MealController {
         return mealRepository.findMealByUserId(userId);
     }
 
+    @GetMapping("meal-plan-{id}")
+    public List<Meal> getMealsFromMealPlan(@PathVariable("id") Integer mealPlanId) {
+        return mealRepository.findMealByMealPlan(mealPlanId);
+    }
+
 }
