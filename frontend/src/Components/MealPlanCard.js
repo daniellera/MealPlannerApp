@@ -1,13 +1,14 @@
 import React from 'react';
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import Meals from './Meals';
 
 export default function MealPlanCard({match}) {
 
     const mealPlanId = Number(match.params.mealPlanId);
 
     const mealPlanList = useSelector(state =>
-        state.mealPlanList)
+        state.mealPlanList);
 
     const mealPlan = mealPlanList.find(mealPlan => mealPlan.id === mealPlanId);
 
@@ -23,7 +24,7 @@ export default function MealPlanCard({match}) {
     return(
         <div>
             <h3>{mealPlan.name}</h3>
-            {/* TODO: Display mealPlan recipes here */} 
+            <Meals mealPlanId={mealPlanId} />
             <Link to='/mealplans' className='home-button'>My Meal Plans</Link>
         </div>
     );

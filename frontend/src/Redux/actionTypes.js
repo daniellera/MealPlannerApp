@@ -20,6 +20,7 @@ export const DELETE_RECIPE = 'DELETE_RECIPE';
 
 export const FETCH_MEAL = 'FETCH_MEAL';
 export const FETCH_MEAL_LIST = 'FETCH_MEAL_LIST';
+export const FETCH_MEALS_BY_MEAL_PLAN = 'FETCH_MEALS_BY_MEAL_PLAN';
 export const ADD_MEAL = 'ADD_MEAL';
 export const EDIT_MEAL = 'EDIT_MEAL';
 export const DELETE_MEAL = 'DELETE_MEAL';

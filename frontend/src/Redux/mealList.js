@@ -10,6 +10,9 @@ action) => {
 
         case ActionTypes.FETCH_MEAL:
             return action.payload;
+
+        case ActionTypes.FETCH_MEALS_BY_MEAL_PLAN:
+            return action.payload;
         
         case ActionTypes.ADD_MEAL:
             return null;
