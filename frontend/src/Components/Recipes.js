@@ -8,11 +8,12 @@ export default function Recipes(props) {
 
     const dispatch = useDispatch();
     const recipeList = useSelector(state => state.recipeList)
+    const token = useSelector(state => state.token);
 
     useEffect(() => {
         switch (props.recipes) {
             case "user":
-                return dispatch(actions.fetchUserRecipes(1)); //TODO: remove parameters and use headers to determine user;
+                return dispatch(actions.fetchUserRecipes(token)); //TODO: remove parameters and use headers to determine user;
             
             case "meal":
                 return dispatch(actions.fetchMealRecipes(props.mealId)); 

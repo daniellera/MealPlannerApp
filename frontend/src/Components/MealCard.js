@@ -26,7 +26,7 @@ export default function MealCard({match}) {
     return(
         <div>
             <h3>{meal.title}</h3>
-            <Recipes recipes={meal} mealId={mealId}/>
+            <Recipes recipes={"meal"} mealId={mealId}/>
             <Link to='/meals' className='home-button'>My Meals</Link>
         </div>
     );
