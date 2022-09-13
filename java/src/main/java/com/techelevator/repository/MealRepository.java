@@ -19,6 +19,13 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
     )
     List<Meal> findMealByUserId(Integer id);
 
+    @Query(
+            value="select * from meal m " +
+                    "join meal_plan_meal mpm on mpm.meal_id = m.meal_id " +
+                    "where mpm.meal_plan_id = ?;",
+            nativeQuery = true
+    )
+    List<Meal> findMealByMealPlan(Integer id);
 
 
 }
