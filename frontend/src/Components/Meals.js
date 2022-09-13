@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import * as actions from "../Redux/actionCreators"
 import { Link } from 'react-router-dom';
+import MealPlanCard from './MealPlanCard';
 
 export default function Meals(props) {
     
@@ -9,7 +10,9 @@ export default function Meals(props) {
     const meals = useSelector(state => state.mealList)
 
     React.useEffect(() => {
-        dispatch(actions.fetchMealList()); //TODO: remove parameters and use headers to determine user
+        props ? 
+        dispatch(actions.fetchMealsByMealPlan(props.mealPlanId)) :
+        dispatch(actions.fetchMealList(1)); //TODO: remove parameters and use headers to determine user
         console.log(meals);
     }, [])
 
