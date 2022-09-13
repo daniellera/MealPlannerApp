@@ -7,7 +7,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import Meals from '../Meals'
 import MealCard from '../MealCard'
-import Recipes from '../Recipes'
+import UserRecipes from '../UserRecipes'
 import RecipeCard from '../RecipeCard'
 import MealPlans from '../MealPlans'
 import MealPlanCard from '../MealPlanCard'
@@ -57,7 +57,7 @@ class Main extends Component {
                     <Route path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
                     <Route path='/meals' component={this.props.token.token !== undefined ? () => <Meals/> : null}/>
                     <Route path='/meal/:mealId' component={({match}) => <MealCard match={match}/>}/>
-                    <Route path='/recipes' component={this.props.token.token !== undefined ? () => <Recipes /> : null}/>
+                    <Route path='/recipes' component={this.props.token.token !== undefined ? () => <UserRecipes /> : null}/>
                     <Route path='/recipe/:recipeId' component={({match}) => <RecipeCard match={match}/>}/>
                     <Route path='/mealplans' component={this.props.token.token !== undefined ? () => <MealPlans/> : null}/>
                     <Route path='/mealplan/:mealPlanId' component={({match}) => <MealPlanCard match={match}/>}/>
