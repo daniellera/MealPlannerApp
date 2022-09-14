@@ -43,6 +43,11 @@ public class RecipeController {
         return recipeRepository.findById(id).get();
     }
 
+    @PostMapping("add")
+    public Recipe updateRecipe(@RequestBody Recipe recipe) {
+       return recipeRepository.save(recipe);
+    }
+
     @DeleteMapping("{id}")
     public boolean deleteRecipe(@PathVariable("id") Integer id) {
         boolean isDeleted = false;

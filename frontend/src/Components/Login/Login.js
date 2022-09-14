@@ -31,15 +31,10 @@ class Login extends Component {
     };
 
     const userWithToken = await axios.post(baseUrl + "/login", data);
-        
-        localStorage.setItem("user", JSON.stringify(userWithToken.data));
 
-        
-        await this.props.dispatch(addToken(userWithToken.data.token))
-        await this.props.dispatch(addUser(userWithToken.data.user));
-
-
-    }
+    await this.props.dispatch(addToken(userWithToken.data.token));
+    await this.props.dispatch(addUser(userWithToken.data.user));
+  };
 
   handleInputChange = (event) => {
     event.preventDefault();
@@ -72,8 +67,8 @@ class Login extends Component {
         <input
           type="password"
           id="password"
-          nameName="password"
-          class="form-control"
+          name="password"
+          className="form-control"
           placeholder="Password"
           v-model="user.password"
           onChange={this.handleInputChange}

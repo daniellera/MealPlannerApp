@@ -9,8 +9,6 @@ import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
-
-
     @Query(
             value="SELECT r.* FROM recipe r " +
                     "JOIN meal_recipe mr ON r.recipe_id = mr.recipe_id " +
@@ -35,4 +33,6 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
             nativeQuery = true
     )
     void deleteRecipe(Integer recipeId);
+
+
 }

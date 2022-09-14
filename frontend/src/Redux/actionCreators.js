@@ -7,7 +7,8 @@ function authHeaders() {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (user && user.token) {
-        return user.token;
+        const token = user.token;
+        return token;
     } else {
         return {};
     }
@@ -22,12 +23,6 @@ axios.interceptors.request.use(
         return Promise.reject(error);
     }
 )
-
-const requestBody = () => {
-    return {
-        key: "value",
-    }
-}
 
 export const addToken = (token) => ({
     type: ActionTypes.ADD_TOKEN,
@@ -58,7 +53,7 @@ export const fetchRecipe = (recipeId) => async (dispatch, getState) => {
 export const fetchUserRecipes = (token) => async (dispatch, getState) => {
     const bigToken = getState().token;
     const response = await Axios.get(
-        `${baseUrl}/recipe/my-recipes`
+        `${baseUrl}/recipe/my-recipes`, authHeaders()
     )
 
     dispatch({
@@ -81,7 +76,7 @@ export const fetchMealRecipes = (mealId) => async (dispatch, getState) => {
 
 export const fetchMealList= () => async (dispatch, getState) => {
     const response = await Axios.get(
-        `${baseUrl}/meal/my-meals`,
+        `${baseUrl}/meal/my-meals`
     )
 
     dispatch({
@@ -92,7 +87,7 @@ export const fetchMealList= () => async (dispatch, getState) => {
 
 export const fetchMealPlanList= () => async (dispatch, getState) => {
     const response = await Axios.get(
-        `${baseUrl}/meal-plan/my-meal-plans`,
+        `${baseUrl}/meal-plan/my-meal-plans`
     )
 
     dispatch({
