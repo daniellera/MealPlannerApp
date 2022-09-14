@@ -36,6 +36,7 @@ class Main extends Component {
     handleLogout = () => {
         this.props.addToken("")
         this.props.deleteUser()
+        localStorage.removeItem("user")
     }
 
     render(){
