@@ -43,7 +43,7 @@ public class MealController {
     @GetMapping("my-meals")
     public List<Meal> getMealsFromUser(Principal principal) {
         User user = userDao.findByUsername(principal.getName());
-        return mealRepository.findMealByUserId(Math.toIntExact(user.getId()));
+        return mealRepository.findMealsByUserId(Math.toIntExact(user.getId()));
     }
 
     @GetMapping("meal-plan-{id}")
@@ -61,8 +61,13 @@ public class MealController {
     }
 
     @PostMapping("add")
-    public Meal addMeal(@Valid @RequestBody Meal meal) {
-        return mealRepository.save(meal);
+    public Meal addMeal(@Valid @RequestBody Meal meal, Principal principal) {
+        User user = userDao.findByUsername(principal.getName());
+
+        Meal newMeal = mealRepository.save(meal);
+        mealRepository.addMealToUser(newMeal.getId(), Math.toIntExact(user.getId()));
+
+        return newMeal;
     }
 
     @PostMapping("{mealId}/add-recipe-{recipeId}")
@@ -92,5 +97,4 @@ public class MealController {
         }
         return isDeleted;
     }
-
 }

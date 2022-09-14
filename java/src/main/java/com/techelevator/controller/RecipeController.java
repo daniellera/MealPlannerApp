@@ -56,16 +56,20 @@ public class RecipeController {
     }
 
     @PostMapping("add")
-    public Recipe addRecipe(@Valid @RequestBody Recipe recipe) {
-        return recipeRepository.save(recipe);
+    public Recipe addRecipe(@Valid @RequestBody Recipe recipe, Principal principal) {
+        User user = userDao.findByUsername(principal.getName());
+
+        Recipe newRecipe = recipeRepository.save(recipe);
+        recipeRepository.addRecipeToUser(newRecipe.getId(), Math.toIntExact(user.getId()));
+
+        return newRecipe;
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("{id}/delete")
     public boolean deleteRecipe(@PathVariable("id") Integer id) {
         boolean isDeleted = false;
         try {
-            ingredientsRepository.deleteFromRecipe(id);
-            recipeRepository.deleteRecipe(id);
+            recipeRepository.deleteById(id);
             isDeleted = true;
         } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());

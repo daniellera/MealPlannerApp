@@ -2,9 +2,11 @@ package com.techelevator.repository;
 
 import com.techelevator.entity.Meal;
 import com.techelevator.entity.Recipe;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
                     "ORDER By m.meal_id DESC",
             nativeQuery=true
     )
-    List<Meal> findMealByUserId(Integer id);
+    List<Meal> findMealsByUserId(Integer id);
 
     @Query(
             value="select * from meal m " +
@@ -26,6 +28,14 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
             nativeQuery = true
     )
     List<Meal> findMealByMealPlan(Integer id);
+
+    @Modifying
+    @Transactional
+    @Query(
+            value="INSERT INTO users_meal (meal_id, user_id) VALUES (?, ?)",
+            nativeQuery = true
+    )
+    void addMealToUser(Integer mealId, Integer userId);
 
 
 }

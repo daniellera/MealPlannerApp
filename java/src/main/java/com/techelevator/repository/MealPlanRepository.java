@@ -3,7 +3,9 @@ package com.techelevator.repository;
 import com.techelevator.entity.Meal;
 import com.techelevator.entity.MealPlan;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,4 +28,12 @@ public interface MealPlanRepository extends JpaRepository<MealPlan, Integer> {
             nativeQuery=true
     )
     List<MealPlan> findMealByUserId(Integer id);
+
+//    @Modifying
+//    @Transactional
+//    @Query(
+//            value="INSERT INTO meal_plan_users (meal_plan_id, user_id) VALUES (?, ?)",
+//            nativeQuery = true
+//    )
+//    void addMealPlanToUser(Integer mealPlanId, Integer userId);
 }

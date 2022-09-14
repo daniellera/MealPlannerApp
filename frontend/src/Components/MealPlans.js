@@ -9,7 +9,7 @@ export default function MealPlans(props) {
     const mealPlans = useSelector(state => state.mealPlanList)
 
     React.useEffect(() => {
-        dispatch(actions.fetchMealPlanList()); //TODO: remove parameters and use headers to determine user
+        dispatch(actions.fetchMealPlanList());
         console.log(mealPlans);
     }, [])
 

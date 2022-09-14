@@ -11,7 +11,7 @@ action) => {
         case ActionTypes.FETCH_MEAL_RECIPES:
             return action.payload;
         
-        case ActionTypes.ADD_USER_RECIPE:
+        case ActionTypes.ADD_RECIPE_TO_USER:
             return null;
             
         default: return state;

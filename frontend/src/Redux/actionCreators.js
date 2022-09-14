@@ -38,6 +38,11 @@ export const deleteUser = () => ({
     type: ActionTypes.DELETE_USER
 })
 
+// API CALLS:
+
+/////////////////////////////////// RECIPES /////////////////////////////////////////////////////////////
+
+
 export const fetchRecipe = (recipeId) => async (dispatch, getState) => {
 
         const response = await Axios.get(
@@ -48,10 +53,10 @@ export const fetchRecipe = (recipeId) => async (dispatch, getState) => {
             type: ActionTypes.FETCH_RECIPE,
             payload: response.data
         })
-    }
+}
 
-export const fetchUserRecipes = (token) => async (dispatch, getState) => {
-    const bigToken = getState().token;
+
+export const fetchUserRecipes = () => async (dispatch, getState) => {
     const response = await Axios.get(
         `${baseUrl}/recipe/my-recipes`, authHeaders()
     )
@@ -61,6 +66,7 @@ export const fetchUserRecipes = (token) => async (dispatch, getState) => {
         payload: response.data
     })
 }
+
 
 export const fetchMealRecipes = (mealId) => async (dispatch, getState) => {
     const response = await Axios.get(
@@ -73,6 +79,42 @@ export const fetchMealRecipes = (mealId) => async (dispatch, getState) => {
     })
 
 }
+
+
+export const addRecipeToMeal = (mealId, recipeId) => async (dispatch, getState) => {
+    const response = await Axios.post(
+        `${baseUrl}/meal/${mealId}/add-recipe-${recipeId}`
+    )
+
+    dispatch({
+        type: ActionTypes.ADD_RECIPE_TO_MEAL,
+        payload: response.data
+    })
+}
+
+export const editRecipe = (recipeId, newRecipe) => async (dispatch, getState) => {
+    const response = await Axios.put(
+        `${baseUrl}/recipe/${recipeId}/update`, newRecipe
+    )
+
+    dispatch({
+        type: ActionTypes.EDIT_RECIPE,
+        payload: response.data
+    })
+}
+
+export const deleteRecipe = (recipeId) => async (dispatch, getState) => {
+    const response = await Axios.put(
+        `${baseUrl}/recipe/${recipeId}/delete`
+    )
+
+    dispatch({
+        type: ActionTypes.DELETE_RECIPE,
+        payload: response.data
+    })
+}
+
+/////////////////////////////////// MEALS /////////////////////////////////////////////////////////////
 
 export const fetchMealList= () => async (dispatch, getState) => {
     const response = await Axios.get(
@@ -98,7 +140,7 @@ export const fetchMealPlanList= () => async (dispatch, getState) => {
 
 export const fetchMealsByMealPlan= (mealPlanId) => async (dispatch, getState) => {
     const response = await Axios.get(
-        `http://localhost:8081/meal/meal-plan-${mealPlanId}`
+        `${baseUrl}/meal/meal-plan-${mealPlanId}`
     )
 
     dispatch({
@@ -106,3 +148,11 @@ export const fetchMealsByMealPlan= (mealPlanId) => async (dispatch, getState) =>
         payload: response.data
     })
 }
+
+
+
+export const addMeal = (meal) => async (dispatch, getState) => {
+
+}
+
+/////////////////////////////////// MEAL PLANS /////////////////////////////////////////////////////////////
