@@ -8,6 +8,8 @@ import com.techelevator.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -25,8 +27,6 @@ public class RecipeController {
         this.userDao = userDao;
     }
 
-
-
     @GetMapping("meal-{id}")
     public List<Recipe> getRecipeFromMealId(@PathVariable("id") Integer id) {
         return recipeRepository.findRecipeByMealId(id);
@@ -43,9 +43,21 @@ public class RecipeController {
         return recipeRepository.findById(id).get();
     }
 
+    @Transactional
+    @PutMapping("{id}/update")
+    public Recipe updateRecipeById(@Valid @RequestBody Recipe newRecipe, @PathVariable("id") Integer id) {
+        Recipe oldRecipe = getRecipeFromId(id);
+        oldRecipe.setDetails(newRecipe.getDetails());
+        oldRecipe.setDishType(newRecipe.getDishType());
+        oldRecipe.setInstructions(newRecipe.getInstructions());
+        oldRecipe.setIspublic(newRecipe.getIspublic());
+        oldRecipe.setTitle(newRecipe.getTitle());
+       return recipeRepository.save(oldRecipe);
+    }
+
     @PostMapping("add")
-    public Recipe updateRecipe(@RequestBody Recipe recipe) {
-       return recipeRepository.save(recipe);
+    public Recipe addRecipe(@Valid @RequestBody Recipe recipe) {
+        return recipeRepository.save(recipe);
     }
 
     @DeleteMapping("{id}")

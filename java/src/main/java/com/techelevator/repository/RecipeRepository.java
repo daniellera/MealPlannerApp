@@ -4,6 +4,7 @@ import com.techelevator.entity.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,11 +29,30 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     List<Recipe> findRecipeByUserId(Integer id);
 
     @Modifying
+    @Transactional
+    @Query(
+            value = "INSERT INTO meal_recipe (meal_id, recipe_id) VALUES (?, ?)",
+            nativeQuery = true
+    )
+    void addRecipeToMeal(Integer mealId, Integer recipeId);
+
+    @Modifying
+    @Transactional
+    @Query(
+            value = "DELETE FROM meal_recipe " +
+                    "WHERE meal_id = ?1 " +
+                    "AND recipe_id = ?2",
+            nativeQuery = true
+    )
+    void deleteRecipeFromMeal(Integer mealId, Integer recipeId);
+
+    @Modifying
     @Query(
             value = "DELETE FROM recipe WHERE recipe_id = 1?",
             nativeQuery = true
     )
     void deleteRecipe(Integer recipeId);
+
 
 
 }
