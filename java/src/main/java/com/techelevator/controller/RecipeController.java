@@ -1,11 +1,14 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.UserDao;
 import com.techelevator.entity.Recipe;
+import com.techelevator.model.User;
 import com.techelevator.repository.IngredientRepository;
 import com.techelevator.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -16,15 +19,23 @@ public class RecipeController {
 
     @Autowired
     RecipeRepository recipeRepository;
+    private UserDao userDao;
+
+    public RecipeController(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+
 
     @GetMapping("meal-{id}")
     public List<Recipe> getRecipeFromMealId(@PathVariable("id") Integer id) {
         return recipeRepository.findRecipeByMealId(id);
     }
 
-    @GetMapping("user-{id}")
-    public List<Recipe> getRecipeFromUserId(@PathVariable("id") Integer id) {
-        return recipeRepository.findRecipeByUserId(id);
+    @GetMapping("my-recipes")
+    public List<Recipe> getRecipeFromUser(Principal principal) {
+        User user = userDao.findByUsername(principal.getName());
+        return recipeRepository.findRecipeByUserId(Math.toIntExact(user.getId()));
     }
 
     @GetMapping("{id}")

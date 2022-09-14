@@ -1,6 +1,33 @@
 import * as ActionTypes from './actionTypes'
 import Axios from "axios"
 import {baseUrl} from "../Shared/baseUrl"
+import axios from 'axios'
+
+function authHeaders() {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user && user.token) {
+        return user.token;
+    } else {
+        return {};
+    }
+}
+
+axios.interceptors.request.use(
+    config => {
+        config.headers.authorization = `Bearer ${authHeaders()}`
+        return config;
+    },
+    error => {
+        return Promise.reject(error);
+    }
+)
+
+const requestBody = () => {
+    return {
+        key: "value",
+    }
+}
 
 export const addToken = (token) => ({
     type: ActionTypes.ADD_TOKEN,
@@ -19,20 +46,19 @@ export const deleteUser = () => ({
 export const fetchRecipe = (recipeId) => async (dispatch, getState) => {
 
         const response = await Axios.get(
-            `http://localhost:8081/recipe/${recipeId}`
+            `${baseUrl}/recipe/${recipeId}`
         );
 
         dispatch({
             type: ActionTypes.FETCH_RECIPE,
             payload: response.data
         })
-
-
     }
 
-export const fetchUserRecipes = (userId) => async (dispatch, getState) => {
+export const fetchUserRecipes = (token) => async (dispatch, getState) => {
+    const bigToken = getState().token;
     const response = await Axios.get(
-        `http://localhost:8081/recipe/user-${userId}`
+        `${baseUrl}/recipe/my-recipes`
     )
 
     dispatch({
@@ -43,7 +69,7 @@ export const fetchUserRecipes = (userId) => async (dispatch, getState) => {
 
 export const fetchMealRecipes = (mealId) => async (dispatch, getState) => {
     const response = await Axios.get(
-        `http://localhost:8081/recipe/meal-${mealId}`
+        `${baseUrl}/recipe/meal-${mealId}`
 
     )
     dispatch({
@@ -53,9 +79,9 @@ export const fetchMealRecipes = (mealId) => async (dispatch, getState) => {
 
 }
 
-export const fetchMealList= (userId) => async (dispatch, getState) => {
+export const fetchMealList= () => async (dispatch, getState) => {
     const response = await Axios.get(
-        `http://localhost:8081/meal/user-${userId}`
+        `${baseUrl}/meal/my-meals`,
     )
 
     dispatch({
@@ -64,9 +90,9 @@ export const fetchMealList= (userId) => async (dispatch, getState) => {
     })
 }
 
-export const fetchMealPlanList= (userId) => async (dispatch, getState) => {
+export const fetchMealPlanList= () => async (dispatch, getState) => {
     const response = await Axios.get(
-        `http://localhost:8081/meal-plan/user-${userId}`
+        `${baseUrl}/meal-plan/my-meal-plans`,
     )
 
     dispatch({

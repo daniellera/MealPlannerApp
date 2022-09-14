@@ -1,11 +1,14 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.UserDao;
 import com.techelevator.entity.Meal;
+import com.techelevator.model.User;
 import com.techelevator.repository.MealRepository;
 import com.techelevator.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -17,6 +20,11 @@ public class MealController {
     MealRepository mealRepository;
 
     private RecipeRepository recipeRepository;
+    private UserDao userDao;
+
+    public MealController(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @GetMapping("")
     public List<Meal> getAllMeals() {
@@ -24,9 +32,10 @@ public class MealController {
     }
 
     //change getMapping to "my-meals" and use principal
-    @GetMapping("user-{id}")
-    public List<Meal> getMealsFromUser(@PathVariable("id") Integer userId) {
-        return mealRepository.findMealByUserId(userId);
+    @GetMapping("my-meals")
+    public List<Meal> getMealsFromUser(Principal principal) {
+        User user = userDao.findByUsername(principal.getName());
+        return mealRepository.findMealByUserId(Math.toIntExact(user.getId()));
     }
 
     @GetMapping("meal-plan-{id}")
