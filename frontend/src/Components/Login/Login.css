@@ -1,0 +1,53 @@
+
+  body {
+    background-color:#FAFAFA;
+    font-family: 'Inter';
+  }
+  .eggs {
+max-width: 100vw;
+max-height: 100vh;
+
+background: #FAFAFA;
+border-radius: 0px;
+  }
+  
+  footer,header{
+    display: none;
+  }
+ 
+   .form-control{
+    margin:auto;
+    font-size: 16px;
+width: 90vw;
+height: 4em;
+left: 0px;
+top: 123px;
+border-width: 0px;
+
+background: #AAE4F0;
+border-radius: 35px;
+  }
+.loginButton{
+  
+  margin:auto;
+  font-size: 16px;
+width: 90vw;
+height: 4em;
+left: 0px;
+top: 123px;
+border-width: 0px;
+align-self: center;
+background: #41A895;
+border-radius: 35px;
+color: #FAFAFA;
+font-weight: bolder;
+font-size: 18px;
+}
+.LoginContainer{
+display: flex;
+flex-direction: column;
+align-items: center ;
+}
+.something{
+  padding-top: 25px;
+}
