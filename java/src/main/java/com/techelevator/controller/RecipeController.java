@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("recipe")
 @CrossOrigin(origins = "*")
 public class RecipeController {
-    IngredientRepository ingredientsRepository;
+
 
     @Autowired
     RecipeRepository recipeRepository;
