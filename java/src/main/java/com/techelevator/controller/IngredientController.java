@@ -3,6 +3,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
 import com.techelevator.entity.Ingredient;
+import com.techelevator.entity.Recipe;
 import com.techelevator.model.IngredientNotSavedException;
 import com.techelevator.model.User;
 import com.techelevator.repository.IngredientRepository;
@@ -10,6 +11,7 @@ import com.techelevator.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
@@ -27,6 +29,9 @@ public class IngredientController {
         this.userDao = userDao;
     }
 
+    @GetMapping("{id}")
+    public Ingredient findIngredientById(@PathVariable("id")Integer id) {return ingredientRepository.findById(id).get();}
+
     @GetMapping("")
     public List<Ingredient> getAllIngredients() {
         return ingredientRepository.findAll();
@@ -42,15 +47,29 @@ public class IngredientController {
         return ingredientRepository.getGroceryList(Math.toIntExact(user.getId()));
     }
 
+    @Transactional
+    @PutMapping("{id}/update")
+    public Ingredient updateIngredientById(@Valid @RequestBody Ingredient newIngredient, @PathVariable ("id") Integer id) {
+        Ingredient oldIngredient = findIngredientById(id);
+        oldIngredient.setName(newIngredient.getName());
+        oldIngredient.setAmount(newIngredient.getAmount());
+        oldIngredient.setTobepurchased(newIngredient.getTobepurchased());
 
-//    @PutMapping("recipe-{id}")
-//    public Ingredient addIngredientToRecipe(@PathVariable("id") Integer recipeId,
-//                                            @Valid @RequestBody Ingredient postIngredient,
-//                                            @Valid @RequestBody) {
-//        String name = postIngredient.getName();
-//        boolean tobepurchased = postIngredient.getTobepurchased();
-//        ingredientRepository.saveToRecipe(recipeId, name, tobepurchased, amount);
-//
-//    }
+        return ingredientRepository.save(oldIngredient);
+    }
+
+
+
+    @DeleteMapping("{id}/delete")
+    public boolean deleteIngredient(@PathVariable("id") Integer id) {
+        boolean isDeleted = false;
+        try {
+            ingredientRepository.deleteById(id);
+            isDeleted = true;
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+        return isDeleted;
+    }
 
 }

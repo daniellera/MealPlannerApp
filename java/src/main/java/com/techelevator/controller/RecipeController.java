@@ -21,9 +21,12 @@ public class RecipeController {
 
     @Autowired
     RecipeRepository recipeRepository;
+
+    private IngredientRepository ingredientRepository;
     private UserDao userDao;
 
-    public RecipeController(UserDao userDao) {
+    public RecipeController(UserDao userDao, IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
         this.userDao = userDao;
     }
 
@@ -63,6 +66,20 @@ public class RecipeController {
         recipeRepository.addRecipeToUser(newRecipe.getId(), Math.toIntExact(user.getId()));
 
         return newRecipe;
+    }
+
+    @PostMapping("{recipeId}/add-ingredient-{ingredientId}")
+    public boolean addIngredientToRecipe(
+            @PathVariable("recipeId") Integer recipeId,
+            @PathVariable("ingredientId")Integer ingredientId) {
+        boolean isAdded = false;
+        try {
+            ingredientRepository.putIngredientInRecipe(recipeId, ingredientId);
+            isAdded = true;
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+        return isAdded;
     }
 
     @DeleteMapping("{id}/delete")

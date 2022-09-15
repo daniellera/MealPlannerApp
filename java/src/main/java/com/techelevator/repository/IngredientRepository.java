@@ -22,24 +22,6 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
     )
     List<Ingredient> findIngredientByRecipeID(Integer id);
 
-    @Transactional
-    @Modifying
-    @Query(
-            value =     "WITH data (name, tobepurchased, recipe_id, amount) AS (VALUES(?2, ?3, 1, ?4)), " +
-        "ins1 AS ( " +
-        "INSERT INTO ingredients(name, tobepurchased) "+
-        "SELECT name, tobepurchased FROM data "+
-        "RETURNING name, tobepurchased, ingredients_id as new_id " +
-        ") " +
-        "INSERT INTO ingredients_recipe (ingredients_id, recipe_id, amount) " +
-        "SELECT ins1.new_id, d.recipe_id, d.amount " +
-        "FROM data d " +
-        "JOIN ins1 USING (name, tobepurchased) " +
-        "WHERE recipe_id = d.recipe_id",
-            nativeQuery = true
-    )
-    void saveToRecipe(Integer recipeId, String name, boolean tobepurchased, double amount);
-
     @Query(
             value = "SELECT * from ingredients " +
             "JOIN ingredients_recipe USING (ingredients_id) " +
@@ -60,5 +42,11 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
             nativeQuery = true
     )
     void deleteFromRecipe(Integer recipeId);
+
+    @Modifying
+    @Query(
+            value= "INSERT into ingredients_recipe (recipe_id, ingredients_id) VALUES (1?, 2?)"
+    )
+    void putIngredientInRecipe(Integer recipeId, Integer ingredientId);
 }
 
