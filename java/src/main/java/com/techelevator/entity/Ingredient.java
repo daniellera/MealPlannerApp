@@ -10,8 +10,11 @@ public class Ingredient {
     @Column(name = "ingredients_id", nullable = false)
     private Integer id;
 
-    @Column(name = "name", nullable = false, length = 50)
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
+
+    @Column(name = "amount", nullable = false, length = 100)
+    private String amount;
 
     @Column(name = "tobepurchased", nullable = false)
     private Boolean tobepurchased = false;
@@ -31,6 +34,10 @@ public class Ingredient {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setAmount(String amount) {this.amount = amount;}
+
+    public String getAmount() {return amount;}
 
     public Boolean getTobepurchased() {
         return tobepurchased;

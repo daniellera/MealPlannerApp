@@ -19,9 +19,6 @@ public class IngredientsRecipe {
     @JoinColumn(name = "recipe_id", nullable = false)
     private Recipe recipe;
 
-    @Column(name = "amount", nullable = false, precision = 10, scale = 2)
-    private BigDecimal amount;
-
     public IngredientsRecipeId getId() {
         return id;
     }
@@ -46,12 +43,6 @@ public class IngredientsRecipe {
         this.recipe = recipe;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
-    }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
 
 }
