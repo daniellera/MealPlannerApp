@@ -6,7 +6,7 @@ import { addToken, addUser } from "../../Redux/actionCreators";
 import { baseUrl } from "../../Shared/baseUrl";
 import axios from "axios";
 import "./Login.css";
-import image from "../../images/top_with_photos_(phone).png";
+import image from "../../images/top_with_photos.png";
 import LoginPhoto from "../../images/Login.png";
 
 const mapDispatchToProps = (dispatch) => ({
