@@ -45,7 +45,7 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
 
     @Modifying
     @Query(
-            value= "INSERT into ingredients_recipe (recipe_id, ingredients_id) VALUES (1?, 2?)"
+            value= "INSERT into ingredients_recipe (recipe_id, ingredients_id) VALUES (1?, 2?)", nativeQuery = true
     )
     void putIngredientInRecipe(Integer recipeId, Integer ingredientId);
 }
