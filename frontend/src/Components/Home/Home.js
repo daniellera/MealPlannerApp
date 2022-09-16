@@ -8,7 +8,7 @@ function Home(props) {
             <div className='theHead'>
                 <img src={user} className="userphoto"/>
                 <img src={LoginPhoto} className="loginPhoto"/>
-                <p>{props.user}</p>
+                <p>{`@${props.user}`}</p>
                
             </div>
             <div className='bubbles'>
