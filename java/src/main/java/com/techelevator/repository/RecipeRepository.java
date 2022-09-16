@@ -23,7 +23,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     @Modifying
     @Transactional
     @Query(
-            value="INSERT INTO recipe_users (recipe_id, user_id) VALUES (?, ?)",
+            value="INSERT INTO recipe_users (recipe_id, user_id) VALUES (?1, ?2)",
             nativeQuery = true
     )
     void addRecipeToUser(Integer recipeId, Integer userId);
@@ -40,7 +40,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     @Modifying
     @Transactional
     @Query(
-            value = "INSERT INTO meal_recipe (meal_id, recipe_id) VALUES (?, ?)",
+            value = "INSERT INTO meal_recipe (meal_id, recipe_id) VALUES (?1, ?2)",
             nativeQuery = true
     )
     void addRecipeToMeal(Integer mealId, Integer recipeId);
