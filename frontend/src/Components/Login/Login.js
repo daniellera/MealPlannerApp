@@ -52,36 +52,36 @@ class Login extends Component {
         {/* <h1>Please Sign In</h1> */}
         <img alt="login" src={LoginPhoto} className="login" />
         <div className="something">
-        <label class="sr-only">Username</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          className="form-control"
-          placeholder="Username"
-          v-model="user.username"
-          onChange={this.handleInputChange}
-          required
-        />
+          <label class="sr-only">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            className="form-control"
+            placeholder="Username"
+            v-model="user.username"
+            onChange={this.handleInputChange}
+            required
+          />
         </div>
         <div className="something">
-        <label class="sr-only">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          className="form-control"
-          placeholder="Password"
-          v-model="user.password"
-          onChange={this.handleInputChange}
-          required
-        />
+          <label class="sr-only">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="form-control"
+            placeholder="Password"
+            v-model="user.password"
+            onChange={this.handleInputChange}
+            required
+          />
         </div>
-        {/* <Link to="/register">Need an account?</Link> */}
-       <div className="something"> <button type="submit" className = "loginButton" onClick={this.handleLogin}>
+        <div className="something"> <button type="submit" className="loginButton" onClick={this.handleLogin}>
           Sign in
         </button>
         </div>
+        <div className="something"><Link to="/register">Register</Link></div>
       </div>
     );
   }

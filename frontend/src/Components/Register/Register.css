@@ -1,0 +1,9 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-container .form-control {
+    background-color: #FFCBCB;
+}
