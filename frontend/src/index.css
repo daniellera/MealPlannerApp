@@ -28,3 +28,12 @@ code {
 .grocery-list-item {
   display: flex;
 }
+
+header {
+  display: none;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}

@@ -65,7 +65,7 @@ class Main extends Component {
                     <Route path='/grocerylist' component={this.props.token.token !== undefined ? () => <GroceryList/> : null}/>
                     {/* <Redirect to='/login'/> */}
                 </Switch>
-                <Footer />
+                <Footer login={this.props.token.token} handleClick={this.handleLogout}/>
             </div>
         )
     }

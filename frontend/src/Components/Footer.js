@@ -1,9 +1,16 @@
 import React from 'react';
+import { Redirect, Link } from 'react-router-dom'
 
-export default function Footer() {
+export default function Footer(props) {
     return(
         <footer>
-            &copy; 2022
+            {props.login !== undefined &&
+                <div>
+                    <Link to='/home'>Home</Link>
+                    <Link to='/login' onClick={props.handleClick}>logout</Link>
+                    <Redirect to='/home' />
+                </div>
+            }
         </footer>
     );
 }

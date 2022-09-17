@@ -25,19 +25,11 @@ body {
 }
 
 .userphoto {
-    position: absolute;
-    width: 92px;
-    height: 92px;
-    left: 33px;
-    top: 57px;
+    display: auto;
 }
 
 .loginphoto {
-    position: absolute;
-    width: 45px;
-    height: 36px;
-    left: 134px;
-    top: 62px;
+    display: auto;
 }
 
 @media screen and (max-width : 800px) {
