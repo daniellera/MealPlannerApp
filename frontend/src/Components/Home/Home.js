@@ -1,25 +1,53 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Home.css';
 import user from "../../images/defualt_user_image.png";
 import LoginPhoto from "../../images/logo_next_to_name.png";
+import mealPlanImage from "../../images/meal_plan_image.png";
+import mealImage from "../../images/meal_image.png";
+import recipeImage from "../../images/recipe_image.png";
+
+
 function Home(props) {
-    return(
+
+    const css = '.back-arrow {display: none;} '
+    return (
         <div>
             <div className='theHead'>
-                <img src={user} className="userphoto"/>
-                <img src={LoginPhoto} className="loginPhoto"/>
-                <p>{`@${props.user}`}</p>
-               
+
+                <div className='logo-user'>
+                    <img src={user} className="userphoto" />
+                    <div>
+                        <div>
+                            <img src={LoginPhoto} className="loginPhoto" />
+                        </div>
+                        <p>{`@${props.user}`}</p>
+                    </div>
+                </div>
             </div>
+            <hr />
             <div className='bubbles'>
-            <div className="something">   <Link to='/mealplans' className='home-button'>My Meal Plans</Link></div>
-            <div className="something">  <Link to='/meals' className='home-button'>My Meals</Link></div>
-            <div className="something">  <Link to='/recipes' className='home-button'>My Recipes</Link></div>
+                <div className="something">
+
+                    <Link to='/mealplans' className='home-button'><div>
+                        <img src={mealPlanImage} alt="Meal plan image" className="home-image" />
+                    </div><strong>Meal Plans</strong></Link>
+                </div>
+                <div className="something">
+
+                    <Link to='/meals' className='home-button'><div>
+                        <img src={mealImage} alt="Meal image" className="home-image" />
+                    </div><strong>Meals</strong></Link>
+                </div>
+                <div className="something">
+
+                    <Link to='/recipes' className='home-button'><div>
+                        <img src={recipeImage} alt="Recipe image" className="home-image" />
+                    </div><strong>Recipes</strong></Link>
+                </div>
             </div>
-            {/* My Meal Plans 
-            My Meals
-            My Recipes */}
+            <style>{css}</style>
         </div>
+
     )
 }
 

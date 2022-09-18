@@ -29,7 +29,7 @@ export default function RecipeCard({match}) {
             <p>{recipe.details}</p>
             <h4>Instructions: </h4>
             <p>{recipe.instructions}</p>
-            <Link to='/recipes' className='home-button'>My Recipes</Link>
+            <Link to='/recipes'>My Recipes</Link>
         </div>
     );
 }

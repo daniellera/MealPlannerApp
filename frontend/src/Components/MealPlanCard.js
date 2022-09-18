@@ -25,7 +25,7 @@ export default function MealPlanCard({match}) {
         <div>
             <h3>{mealPlan.name}</h3>
             <Meals mealPlanId={mealPlanId} />
-            <Link to='/mealplans' className='home-button'>My Meal Plans</Link>
+            <Link to='/mealplans'>My Meal Plans</Link>
         </div>
     );
 }

@@ -39,7 +39,7 @@ export default function GroceryList(props) {
                     </div>
                 )
             })}
-            <Link to='/mealplans' className='home-button'>My Meal Plans</Link>
+            <Link to='/mealplans'>My Meal Plans</Link>
         </div>
     );
 }

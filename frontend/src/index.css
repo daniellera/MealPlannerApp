@@ -20,11 +20,6 @@ code {
     monospace;
 }
 
-.home-button {
-  display: flex;
-  flex-direction: column;
-}
-
 .grocery-list-item {
   display: flex;
 }
@@ -34,6 +29,30 @@ header {
 }
 
 footer {
+  margin: 0 auto;
+  width: 40vw;
+  padding: 2vh 0;
+}
+
+footer > div {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-arrow {
+  max-height: 30px;
+  max-width: 30px;
+}
+
+.logout-button {
+  max-height: 30px;
+}
+
+@media screen and (max-width : 800px) {
+  footer {
+    margin: 0 auto;
+    width: 80vw;
+    padding: 2vh 0;
+  }
 }
