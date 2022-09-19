@@ -24,10 +24,9 @@ export default function MealCard({match}) {
     }
 
     return(
-        <div>
-            <h3>{meal.title}</h3>
+        <div className="list-card-container">
+            <h3 className='card-title'>{meal.title}</h3>
             <Recipes recipes={"meal"} mealId={mealId}/>
-            <Link to='/meals'>My Meals</Link>
         </div>
     );
 }

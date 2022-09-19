@@ -29,7 +29,7 @@ export default function GroceryList(props) {
     }
 
     return(
-        <div>
+        <div className="list-card-container">
             {ingredientsList.map(ingredient => {
                 return (
                     <div className="grocery-list-item">

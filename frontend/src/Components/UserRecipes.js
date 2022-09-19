@@ -7,8 +7,8 @@ import Recipes from './Recipes';
 export default function UserRecipes(props) {
 
     return(
-        <div>
-            <h1>My Recipes</h1>
+        <div className='list-card-container' id='user-recipes-container'>
+            <h1 className='page-title'>My Recipes</h1>
             <Recipes
                 recipes={"user"}
             />

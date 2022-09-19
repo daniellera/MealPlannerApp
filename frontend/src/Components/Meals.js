@@ -18,12 +18,11 @@ export default function Meals(props) {
 
     const mealList = meals.length ? (
         meals.map(meal => (
-        <div key={meal.id}>
-            <h5>{meal.title}</h5>
+        <div key={meal.id} className='list-item'>
             <Link
                 to={`/meal/${meal.id}`}
                 className='button muted-button'
-                > View Meal Details
+                ><h5>{meal.title}</h5>
             </Link>
             {console.log(meal.id)}
             <br /><br />
@@ -36,7 +35,8 @@ export default function Meals(props) {
     )
 
     return(
-        <div>
+        <div className="list-card-container">
+            {!props.mealPlanId && <h4 className='page-title'>Meals</h4>}
             {mealList}
         </div>
     );

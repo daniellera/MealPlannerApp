@@ -23,13 +23,12 @@ export default function RecipeCard({match}) {
     }
 
     return(
-        <div>
-            <h3>{recipe.title}</h3>
+        <div className="list-card-container">
+            <h3 className='card-title'>{recipe.title}</h3>
             <h6>Category: {recipe.dishType}</h6>
             <p>{recipe.details}</p>
             <h4>Instructions: </h4>
             <p>{recipe.instructions}</p>
-            <Link to='/recipes'>My Recipes</Link>
         </div>
     );
 }

@@ -22,10 +22,9 @@ export default function MealPlanCard({match}) {
     }
 
     return(
-        <div>
-            <h3>{mealPlan.name}</h3>
+        <div className="list-card-container">
+            <h3 className='card-title'>{mealPlan.name}</h3>
             <Meals mealPlanId={mealPlanId} />
-            <Link to='/mealplans'>My Meal Plans</Link>
         </div>
     );
 }
