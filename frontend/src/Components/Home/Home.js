@@ -5,15 +5,15 @@ import LoginPhoto from "../../images/logo_next_to_name.png";
 import mealPlanImage from "../../images/meal_plan_image.png";
 import mealImage from "../../images/meal_image.png";
 import recipeImage from "../../images/recipe_image.png";
+import logoutButton from '../../images/logout_button.png'
 
 
 function Home(props) {
 
-    const css = '.back-arrow {display: none;} '
+    const css = 'footer {display: none;} '
     return (
         <div>
             <div className='theHead'>
-
                 <div className='logo-user'>
                     <img src={user} className="userphoto" />
                     <div>
@@ -22,6 +22,7 @@ function Home(props) {
                         </div>
                         <p>{`@${props.user}`}</p>
                     </div>
+                    <Link to='/login' onClick={props.handleClick}><img src={logoutButton} alt="Back to home" className="logout-button home-logout-button" /></Link>
                 </div>
             </div>
             <hr />
