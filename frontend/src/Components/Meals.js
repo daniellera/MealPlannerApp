@@ -3,6 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 import * as actions from "../Redux/actionCreators"
 import { Link } from 'react-router-dom';
 import MealPlanCard from './MealPlanCard';
+import mealImage from "../images/meal_plan_image.png";
+
+
 
 export default function Meals(props) {
     
@@ -21,8 +24,10 @@ export default function Meals(props) {
         <div key={meal.id} className='list-item'>
             <Link
                 to={`/meal/${meal.id}`}
-                className='button muted-button'
-                ><h5>{meal.title}</h5>
+                className='button muted-button meal-button'
+                >
+                    <img src={mealImage} alt="Meal image" />
+                    <h5 className='meal-recipe-li-title'>{meal.title}</h5>
             </Link>
             {console.log(meal.id)}
             <br /><br />

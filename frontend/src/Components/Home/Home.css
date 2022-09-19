@@ -65,7 +65,6 @@ hr {
 @media screen and (max-width : 800px) {
     .home-button {
         width: 80vw;
-        height: 20vh;
         left: 0px;
         top: 123px;
         text-align: center;

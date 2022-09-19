@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../Redux/actionCreators"
 import { Link } from 'react-router-dom';
+import recipeImage from '../images/meal_image.png'
 
 export default function Recipes(props) {
 
@@ -30,10 +31,13 @@ export default function Recipes(props) {
 
                 <Link
                     to={`/recipe/${recipe.id}`}
-                    className='button muted-button'
+                    className='button muted-button recipe-button'
                 >
-                    <h3>{recipe.title}</h3>
-                    <p>{recipe.dishType}</p>
+                    <img src={recipeImage} alt="Recipe image" />
+                    <div>
+                        <h3 className='meal-recipe-li-title'>{recipe.title}</h3>
+                        <p>{recipe.dishType}</p>
+                    </div>
                 </Link>
                 {console.log(recipe.id)}
 

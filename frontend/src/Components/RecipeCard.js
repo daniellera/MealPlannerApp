@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import thisRecipeImage from '../images/this_recipe_image.png';
 
 export default function RecipeCard({match}) {
 
@@ -23,12 +24,15 @@ export default function RecipeCard({match}) {
     }
 
     return(
-        <div className="list-card-container">
-            <h3 className='card-title'>{recipe.title}</h3>
-            <h6>Category: {recipe.dishType}</h6>
-            <p>{recipe.details}</p>
-            <h4>Instructions: </h4>
-            <p>{recipe.instructions}</p>
+        <div className="list-card-container recipe-container">
+            <img src={thisRecipeImage} alt="Recipe image" className='recipe-image'/>
+            <h3 className='recipe-title'>{recipe.title}</h3>
+            <h6 className='recipe-type'>{recipe.dishType}</h6>
+            <h4 className='recipe-subtitle'>Description: </h4>
+            <p className='recipe-details'>{recipe.details}</p>
+            <br></br>
+            <h4 className='recipe-subtitle'>Instructions: </h4>
+            <p className='recipe-instructions'>{recipe.instructions}</p>
         </div>
     );
 }
