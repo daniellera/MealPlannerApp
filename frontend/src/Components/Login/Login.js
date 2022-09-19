@@ -9,6 +9,8 @@ import "./Login.css";
 import image from "../../images/top_with_photos.png";
 import LoginPhoto from "../../images/Login.png";
 
+const css = "footer {display: none}"
+
 const mapDispatchToProps = (dispatch) => ({
   addToken: () => dispatch(addToken()),
   addUser: () => dispatch(addUser()),
@@ -82,6 +84,7 @@ class Login extends Component {
         </button>
         </div>
         <div className="something"><Link to="/register">Register</Link></div>
+        <style>{css}</style>
       </div>
     );
   }

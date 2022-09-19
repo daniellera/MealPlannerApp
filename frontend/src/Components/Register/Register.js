@@ -5,6 +5,8 @@ import { baseUrl } from '../../Shared/baseUrl'
 import './Register.css'
 import logo from '../../images/logo.png'
 
+const css = "footer {display: none}"
+
 class Register extends Component {
 
     constructor(props) {
@@ -14,7 +16,6 @@ class Register extends Component {
             password: '',
             confirmPassword: ''
         }
-
     }
 
     handleInputChange = (event) => {
@@ -80,6 +81,7 @@ class Register extends Component {
                     <button className="loginButton" type="submit" onClick={this.handleSubmit}>Submit</button>
                 </div>
                 <Link className="something" to="/login">Have an account?</Link>
+                <style>{css}</style>
             </div>
         )
     }

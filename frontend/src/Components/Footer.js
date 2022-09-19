@@ -2,6 +2,16 @@ import React from 'react';
 import { Redirect, Link } from 'react-router-dom'
 import backArrow from '../images/back_arrow.png'
 import logoutButton from '../images/logout_button.png'
+// import { useHistory } from "react-router-dom";
+
+// export const Item = () => {
+//     let history = useHistory();
+//     return (
+//         <>
+//           <button onClick={() => history.goBack()}>Back</button>
+//         </>
+//     );
+// };
 
 export default function Footer(props) {
     return(
