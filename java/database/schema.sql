@@ -94,97 +94,100 @@ CREATE TABLE meal_plan_users(
 
 
 
-INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('PrepMeals','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
-INSERT INTO recipe (title, details, instructions, dish_type, isPublic) VALUES('Test Recipe 1', 'Recipe Details 1 (life story etc.)', 'Recipe 1 Instructions (Amounts, 1., 2., 3.)', 'Vegan', false);
-INSERT INTO recipe (title, details, instructions, dish_type, isPublic) VALUES('Test Recipe 2', 'Recipe Details 2 (life story etc.)', 'Recipe 2 Instructions (Amounts, 1., 2., 3.)', 'Diary-Free', false);
-INSERT INTO recipe (title, details, instructions, dish_type, isPublic) VALUES('Test Recipe 3', 'Recipe Details 3 (life story etc.)', 'Recipe 3 Instructions (Amounts, 1., 2., 3.)', NULL , false);
-INSERT INTO recipe (title, details, instructions, dish_type, isPublic) VALUES('Test Recipe 4', 'Recipe Details 4 (life story etc.)', 'Recipe 4 Instructions (Amounts, 1., 2., 3.)', ('Keto' ,'Soy-Free'), false);
+INSERT INTO recipe (title, details, instructions, dish_type, isPublic) VALUES('Apple Cinnamon Oatmeal', 'This is a wonderful, simple recipe for an apple cinnamon oatmeal. Even the kids can make this one!', 'Combine the water, apple juice, and apples in a saucepan. Bring to a boil over high heat, and stir in the rolled oats and cinnamon. Return to a boil, then reduce heat to low, and simmer until thick, about 3 minutes. Spoon into serving bowls, and pour milk over the servings.', 'Vegetarian', false);
+INSERT INTO recipe (title, details, instructions, dish_type, isPublic) VALUES('Vegan Kale Smoothie', 'Combine kale, mango, pineapple, banana, and almond-coconut milk for a delicious and nutritious vegan smoothie the kids will love!', 'Combine kale, mango, pineapple, 1 cup almond-coconut milk, banana, chia seeds, and flax seed in a high-performance blender (such as Vitamix®); blend until smooth. Add more coconut milk beverage if mixture is too thick.', 'Vegan', false);
+INSERT INTO recipe (title, details, instructions, dish_type, isPublic) VALUES('Best Homemade Pizza', 'I love this Easy Homemade Pizza Recipe! I have been perfecting this recipe for years. It is quick to put together and so versatile. I’ll give you lots of tips, tricks, and ideas to get the best homemade pizza to ever come out of your wimpy, not-wood-fired oven!', concat('1. Place a pizza stone in the bottom third of your oven. (place a rimmed baking sheet or a pizza pan in the oven if you don''t have a stone.)',CHR(13),CHR(10),'2. Preheat your oven to 550 degrees F, or as high as it will go (at least 475.) Let the stone preheat for 30 minutes.',CHR(13),CHR(10),'3. Prepare a work surface with oil or flour if your dough is sticky, then roll out the dough until it is about 12 inches across',CHR(13),CHR(10),'4. Transfer dough to parchment paper, rub with oil over the top of the dough and let it rest for 10 minutes for a thicker crust',CHR(13),CHR(10),'5. Par bake the dough in the over for 1-2 minutes or until the dough is slightly puffed, be sure to poke any bubbles in the crust',CHR(13),CHR(10),'6. Add pizza sauce, thinly sliced mozzarella and shredded mozzarella and the pepperoni slices evenly across',CHR(13),CHR(10),'7. Bake the pizza for about 8-12 minutes',CHR(13),CHR(10),'8. When the crust is golden brown, remove from the oven and place directly onto a cooling rack. Let cool and enjoy :)'), NULL , false);
+INSERT INTO recipe (title, details, instructions, dish_type, isPublic) VALUES('Mexican Tinga', 'This is an authentic Mexican favorite! Shredded chicken and onions simmered in a thick chipotle sauce served on crunchy tostadas.', concat('Step 1: Heat olive oil in a saucepan over medium heat. Add the onions; cook and stir until softened and translucent, about 5 minutes. Meanwhile, puree the tomatoes with chipotle peppers and adobo sauce to taste. Pour into the onions, and add chicken. Cover, and simmer for 20 minutes.',CHR(13),CHR(10),' Step 2: To serve, mound the chicken onto tostada shells, and garnish with a dollop of sour cream.'), NULL, false);
 
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 1, Recipe 1', '2 lbs.', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 2, Recipe 1', '2 cups', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 3, Recipe 1', '3 tbsp', true);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 4, Recipe 1', '2 egg whites', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 5, Recipe 1', '1/2 tsp.', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 6, Recipe 1', '2 sprigs', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 7, Recipe 1', '1', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('water', '1 cup', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('apple juice', '1/4 cup', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('apple', '1 cored and chopped', true);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('rolled oats', '2/3 cup', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('ground cinnamon', '1 tsp.', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('milk', '1 cup', false);
 
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 1, Recipe 2', '6 cups', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 2, Recipe 2', '3 cups', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 3, Recipe 2', '2 tbsp', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 4, Recipe 2', '1/2 cup', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 5, Recipe 2', '1/2', true);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 6, Recipe 2', '2 tsp.', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 7, Recipe 2', 'garnish', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('chopped kale', '2 cups', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('frozen mango chunks', '1 cup', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('frozen pineapple chunks', '1 cup', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('almond milk', '1 cup', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('banana', '1 small', true);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('chia seeds', '2 tbsp.', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('flax seeds', '1 tbsp.', false);
 
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 1, Recipe 3', '1.5 lbs.', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 2, Recipe 3', '2 cups', true);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 3, Recipe 3', '3', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 4, Recipe 3', '1/3', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 5, Recipe 3', '2 tbs.', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 6, Recipe 3', '2 tbsp.',false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 7, Recipe 3', '1/2 cup.', true);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 8, Recipe 3', 'to taste', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('ball of pizza dough', '1 lb.', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('olive oil to coat', '1 tbsp.', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('pizza sauce', '1 cup', true);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('mozzarella cheese (thinly sliced)', '3 oz.', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('mozzarella cheese (shredded)', '5 oz.', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('pepperoni', '2.5 oz.',false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('parmesan cheese (shredded)', '2 tbsp.', true);
 
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 1, Recipe 4', '3 cups', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 2, Recipe 4', '2 tbs.', true);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 3, Recipe 4', '3', false);
-INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('Test ingredients 4, Recipe 4', 'full rack', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('olive oil', '2 tbsp.', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('onion', '1 large, cut into rings', true);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('stewed tomatoes', '1 (15 oz.) can', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('chipotle peppers in adobo sauce', '1 (7 oz.) can', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('shredded chicken meat', '2 lbs.', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('tostada shells', '16 shells', false);
+INSERT INTO ingredients (name , amount, toBePurchased) VALUES ('sour cream', '1/2 cup', false);
 
-INSERT INTO meal(title, description) VALUES ('Test meal 1', 'Long winded description 1');
-INSERT INTO meal(title, description) VALUES ('Test meal 2', 'Long winded description 2');
+INSERT INTO meal(title, description) VALUES ('Smoothies', 'Long winded description 1');
+INSERT INTO meal(title, description) VALUES ('Cheat Day', 'Long winded description 2');
 
-INSERT INTO users_meal (user_id, meal_id) VALUES ((SELECT user_id FROM users where username = 'user'),(SELECT meal_id FROM meal where title = 'Test meal 1'));
-INSERT INTO users_meal (user_id, meal_id) VALUES ((SELECT user_id FROM users where username = 'user'),(SELECT meal_id FROM meal where title = 'Test meal 2'));
+INSERT INTO users_meal (user_id, meal_id) VALUES ((SELECT user_id FROM users where username = 'PrepMeals'),(SELECT meal_id FROM meal where title = 'Smoothies'));
+INSERT INTO users_meal (user_id, meal_id) VALUES ((SELECT user_id FROM users where username = 'PrepMeals'),(SELECT meal_id FROM meal where title = 'Cheat Day'));
 
-INSERT INTO meal_plan (user_id, name) VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Test meal plan 1');
+INSERT INTO meal_plan (user_id, name) VALUES ((SELECT user_id FROM users WHERE username = 'PrepMeals'), 'Test meal plan 1');
 
-INSERT INTO recipe_users (recipe_id, user_id) VALUES ((SELECT recipe_id from recipe r WHERE r.title = 'Test Recipe 1'), (SELECT user_id FROM users WHERE username = 'user'));
-INSERT INTO recipe_users (recipe_id, user_id) VALUES ((SELECT recipe_id from recipe r WHERE r.title = 'Test Recipe 2'), (SELECT user_id FROM users WHERE username = 'user'));
-INSERT INTO recipe_users (recipe_id, user_id) VALUES ((SELECT recipe_id from recipe r WHERE r.title = 'Test Recipe 3'), (SELECT user_id FROM users WHERE username = 'user'));
-INSERT INTO recipe_users (recipe_id, user_id) VALUES ((SELECT recipe_id from recipe r WHERE r.title = 'Test Recipe 4'), (SELECT user_id FROM users WHERE username = 'user'));
+INSERT INTO recipe_users (recipe_id, user_id) VALUES ((SELECT recipe_id from recipe r WHERE r.title = 'Apple Cinnamon Oatmeal'), (SELECT user_id FROM users WHERE username = 'PrepMeals'));
+INSERT INTO recipe_users (recipe_id, user_id) VALUES ((SELECT recipe_id from recipe r WHERE r.title = 'Vegan Kale Smoothie'), (SELECT user_id FROM users WHERE username = 'PrepMeals'));
+INSERT INTO recipe_users (recipe_id, user_id) VALUES ((SELECT recipe_id from recipe r WHERE r.title = 'Best Homemade Pizza'), (SELECT user_id FROM users WHERE username = 'PrepMeals'));
+INSERT INTO recipe_users (recipe_id, user_id) VALUES ((SELECT recipe_id from recipe r WHERE r.title = 'Mexican Tinga'), (SELECT user_id FROM users WHERE username = 'PrepMeals'));
 
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%1, Recipe 1'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 1%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%2, Recipe 1'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 1%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%3, Recipe 1'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 1%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%4, Recipe 1'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 1%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%5, Recipe 1'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 1%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%6, Recipe 1'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 1%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%7, Recipe 1'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 1%'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'water'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Apple Cinnamon Oatmeal'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'apple juice'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Apple Cinnamon Oatmeal'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'apple'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Apple Cinnamon Oatmeal'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'rolled oats'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Apple Cinnamon Oatmeal'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'ground cinnamon'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Apple Cinnamon Oatmeal'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'milk'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Apple Cinnamon Oatmeal'));
 
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%1, Recipe 2'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 2%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%2, Recipe 2'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 2%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%3, Recipe 2'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 2%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%4, Recipe 2'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 2%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%5, Recipe 2'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 2%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%6, Recipe 2'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 2%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%7, Recipe 2'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 2%'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'chopped kale'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Vegan Kale Smoothie'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'frozen mango chunks'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Vegan Kale Smoothie'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'frozen pineapple chunks'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Vegan Kale Smoothie'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'almond milk'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Vegan Kale Smoothie'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'banana'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Vegan Kale Smoothie'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'chia seeds'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Vegan Kale Smoothie'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'flax seeds'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Vegan Kale Smoothie'));
 
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%1, Recipe 3'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 3%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%2, Recipe 3'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 3%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%3, Recipe 3'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 3%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%4, Recipe 3'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 3%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%5, Recipe 3'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 3%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%6, Recipe 3'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 3%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%7, Recipe 3'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 3%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%8, Recipe 3'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 3%'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'ball of pizza dough'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Best Homemade Pizza'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'olive oil to coat'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Best Homemade Pizza'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'pizza sauce'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Best Homemade Pizza'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'mozzarella cheese (thinly sliced)'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Best Homemade Pizza'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'mozzarella cheese (shredded)'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Best Homemade Pizza'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'pepperoni'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Best Homemade Pizza'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'parmesan cheese (shredded)'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Best Homemade Pizza'));
 
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%1, Recipe 4'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 4%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%2, Recipe 4'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 4%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%3, Recipe 4'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 4%'));
-INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name LIKE '%4, Recipe 4'),(SELECT recipe_id FROM recipe r WHERE r.title LIKE '%Recipe 4%'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'olive oil'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Mexican Tinga'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'onion'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Mexican Tinga'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'stewed tomatoes'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Mexican Tinga'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'chipotle peppers in adobo sauce'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Mexican Tinga'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'shredded chicken meat'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Mexican Tinga'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'tostada shells'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Mexican Tinga'));
+INSERT INTO ingredients_recipe (ingredients_id, recipe_id) VALUES((SELECT ingredients_id from ingredients i where i.name = 'sour cream'),(SELECT recipe_id FROM recipe r WHERE r.title = 'Mexican Tinga'));
 
 
 
-INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m WHERE m.title = 'Test meal 1') , (SELECT recipe_id from recipe r WHERE r.title = 'Test Recipe 1'));
-INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m WHERE m.title = 'Test meal 1') , (SELECT recipe_id FROM recipe r WHERE r.title = 'Test Recipe 2'));
-INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m WHERE m.title = 'Test meal 2') , (SELECT recipe_id FROM recipe r WHERE r.title = 'Test Recipe 3'));
-INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m WHERE m.title = 'Test meal 2') , (SELECT recipe_id FROM recipe r WHERE r.title = 'Test Recipe 4'));
-INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m WHERE m.title = 'Test meal 2') , (SELECT recipe_id FROM recipe r WHERE r.title = 'Test Recipe 1'));
+INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m WHERE m.title = 'Smoothies') , (SELECT recipe_id from recipe r WHERE r.title = 'Apple Cinnamon Oatmeal'));
+INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m WHERE m.title = 'Smoothies') , (SELECT recipe_id FROM recipe r WHERE r.title = 'Vegan Kale Smoothie'));
+INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m WHERE m.title = 'Cheat Day') , (SELECT recipe_id FROM recipe r WHERE r.title = 'Best Homemade Pizza'));
+INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m WHERE m.title = 'Cheat Day') , (SELECT recipe_id FROM recipe r WHERE r.title = 'Mexican Tinga'));
+INSERT INTO meal_recipe (meal_id, recipe_id) VALUES ((SELECT meal_id from meal m WHERE m.title = 'Cheat Day') , (SELECT recipe_id FROM recipe r WHERE r.title = 'Apple Cinnamon Oatmeal'));
 
-INSERT INTO meal_plan_meal (meal_plan_id, meal_id) VALUES ((SELECT meal_plan_id FROM meal_plan p WHERE p.name = 'Test meal plan 1'), (SELECT meal_id FROM meal m WHERE m.title = 'Test meal 2'));
+INSERT INTO meal_plan_meal (meal_plan_id, meal_id) VALUES ((SELECT meal_plan_id FROM meal_plan p WHERE p.name = 'Test meal plan 1'), (SELECT meal_id FROM meal m WHERE m.title = 'Cheat Day'));
 
+INSERT INTO meal_plan_users (meal_plan_id, user_id) VALUES ((SELECT meal_plan_id FROM meal_plan p WHERE p.name = 'Test meal plan 1'), (SELECT user_id FROM users u WHERE u.username = 'PrepMeals'));
 --foreign keys
 
 ALTER TABLE recipe_users ADD CONSTRAINT FK_recipe_users_users FOREIGN KEY (user_id) REFERENCES users(user_id);
