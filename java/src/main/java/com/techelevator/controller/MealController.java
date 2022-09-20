@@ -47,8 +47,8 @@ public class MealController {
     }
 
     @GetMapping("meal-plan-{id}")
-    public List<Meal> getMealsFromMealPlan(@PathVariable("id") Integer mealPlanId) {
-        return mealRepository.findMealByMealPlan(mealPlanId);
+    public List<Meal> getMealsFromMealPlan(@PathVariable("id") Integer id) {
+        return mealRepository.findMealByMealPlan(id);
     }
 
     @Transactional

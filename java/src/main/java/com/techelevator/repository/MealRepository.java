@@ -13,7 +13,7 @@ import java.util.List;
 public interface MealRepository extends JpaRepository<Meal, Integer> {
 
     @Query(
-            value="SELECT m.* FROM meal m " +
+            value=  "SELECT m.* FROM meal m " +
                     "JOIN users_meal mu ON m.meal_id = mu.meal_id " +
                     "WHERE mu.user_id = ?1 " +
                     "ORDER By m.meal_id DESC",
@@ -22,9 +22,9 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
     List<Meal> findMealsByUserId(Integer id);
 
     @Query(
-            value="select * from meal m " +
-                    "join meal_plan_meal mpm on mpm.meal_id = m.meal_id " +
-                    "where mpm.meal_plan_id = ?1;",
+            value=  "SELECT m.* FROM meal m " +
+                    "JOIN meal_plan_meal mpm on mpm.meal_id = m.meal_id " +
+                    "WHERE mpm.meal_plan_id = ?1",
             nativeQuery = true
     )
     List<Meal> findMealByMealPlan(Integer id);
@@ -36,6 +36,24 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
             nativeQuery = true
     )
     void addMealToUser(Integer mealId, Integer userId);
+
+    @Modifying
+    @Transactional
+    @Query(
+            value = "INSERT INTO meal_plan_meal (meal_plan_id, meal_id) VALUES (?1, ?2)",
+            nativeQuery = true
+        )
+    void addMealToMealPlan(Integer mealPlanId, Integer mealId);
+
+    @Modifying
+    @Transactional
+    @Query(
+            value = "DELETE FROM meal_plan_meal " +
+                    "WHERE meal_plan_id = ?1 " +
+                    "AND meal_id = ?2",
+            nativeQuery = true
+        )
+    void deleteMealFromMealPlan(Integer mealPlanId, Integer mealId);
 
 
 }
