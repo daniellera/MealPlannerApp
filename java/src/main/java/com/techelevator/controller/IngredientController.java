@@ -3,6 +3,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
 import com.techelevator.entity.Ingredient;
+import com.techelevator.entity.Meal;
 import com.techelevator.entity.Recipe;
 import com.techelevator.model.IngredientNotSavedException;
 import com.techelevator.model.User;
@@ -45,6 +46,12 @@ public class IngredientController {
     public List<Ingredient> getGroceryList(Principal principal) {
         User user = userDao.findByUsername(principal.getName());
         return ingredientRepository.getGroceryList(Math.toIntExact(user.getId()));
+    }
+    @PostMapping("add-{recipeId}")
+    public Ingredient newIngredient(@Valid @RequestBody Ingredient ingredient, @PathVariable("recipeId") Integer recipeId) {
+        Ingredient newIngredient = ingredientRepository.save(ingredient);
+        ingredientRepository.putIngredientInRecipe(newIngredient.getId(), recipeId);
+        return newIngredient;
     }
 
     @Transactional

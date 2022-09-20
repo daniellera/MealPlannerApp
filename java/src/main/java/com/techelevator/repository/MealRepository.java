@@ -38,4 +38,6 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
     void addMealToUser(Integer mealId, Integer userId);
 
 
+
+
 }

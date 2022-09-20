@@ -29,11 +29,11 @@ public interface MealPlanRepository extends JpaRepository<MealPlan, Integer> {
     )
     List<MealPlan> findMealByUserId(Integer id);
 
-//    @Modifying
-//    @Transactional
-//    @Query(
-//            value="INSERT INTO meal_plan_users (meal_plan_id, user_id) VALUES (?, ?)",
-//            nativeQuery = true
-//    )
-//    void addMealPlanToUser(Integer mealPlanId, Integer userId);
+    @Modifying
+    @Transactional
+    @Query(
+            value="INSERT INTO meal_plan_users (meal_plan_id, user_id) VALUES (?, ?)",
+            nativeQuery = true
+    )
+    void addMealPlanToUser(Integer mealPlanId, Integer userId);
 }
