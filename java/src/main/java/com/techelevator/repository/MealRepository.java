@@ -56,4 +56,6 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
     void deleteMealFromMealPlan(Integer mealPlanId, Integer mealId);
 
 
+
+
 }

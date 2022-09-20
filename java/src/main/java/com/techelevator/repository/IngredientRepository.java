@@ -43,6 +43,8 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
     )
     void deleteFromRecipe(Integer recipeId);
 
+
+
     @Modifying
     @Query(
             value= "INSERT into ingredients_recipe (recipe_id, ingredients_id) VALUES (1?, 2?)", nativeQuery = true

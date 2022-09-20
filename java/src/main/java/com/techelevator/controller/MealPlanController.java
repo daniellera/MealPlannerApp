@@ -9,6 +9,7 @@ import com.techelevator.repository.MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -65,4 +66,13 @@ public class MealPlanController {
         }
         return isDeleted;
     }
+
+    @PostMapping("add")
+    public MealPlan addMealPlan(@Valid @RequestBody MealPlan plan, Principal principal) {
+        User user = userDao.findByUsername(principal.getName());
+        MealPlan newPlan = mealPlanRepository.save(plan);
+        mealPlanRepository.addMealPlanToUser(newPlan.getId(), Math.toIntExact(user.getId()));
+        return newPlan;
+    }
+
 }
