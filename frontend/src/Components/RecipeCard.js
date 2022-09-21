@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import * as actions from "../Redux/actionCreators"
 import { connect } from 'react-redux';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
@@ -7,12 +7,20 @@ import thisRecipeImage from '../images/this_recipe_image.png';
 
 export default function RecipeCard({match}) {
 
+    const dispatch = useDispatch();
     const recipeId = Number(match.params.recipeId);
-
+    
+    const ingredients = useSelector(state => 
+        state.ingredients)
     const recipeList = useSelector(state =>
         state.recipeList)
 
     const recipe = recipeList.find(recipe => recipe.id === recipeId);
+
+    React.useEffect(() => {
+        dispatch(actions.fetchRecipeIngredients(recipeId));
+        console.log(ingredients);
+    }, [])
 
 
     if (!recipe) {

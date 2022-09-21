@@ -4,7 +4,8 @@ import * as actions from "../Redux/actionCreators"
 import { Link } from 'react-router-dom';
 import MealPlanCard from './MealPlanCard';
 import mealImage from "../images/meal_plan_image.png";
-import {BsFillTrashFill, AiFillPlusCircle} from 'react-icons/all'
+import {AiFillPlusCircle} from 'react-icons/ai'
+import {BsFillTrashFill} from 'react-icons/bs'
 import ReactTooltip from "react-tooltip";
 import Dropdown from './Dropdown';
 
