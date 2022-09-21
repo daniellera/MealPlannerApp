@@ -12,6 +12,7 @@ import RecipeCard from '../RecipeCard'
 import MealPlans from '../MealPlans'
 import MealPlanCard from '../MealPlanCard'
 import GroceryList from '../GroceryList'
+import Add from "../Add"
 import {addToken, deleteUser} from '../../Redux/actionCreators'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
@@ -63,6 +64,9 @@ class Main extends Component {
                     <Route path='/mealplans' component={this.props.token.token !== undefined ? () => <MealPlans/> : null}/>
                     <Route path='/mealplan/:mealPlanId' component={this.props.token.token !== undefined ? ({match}) => <MealPlanCard match={match}/> : null}/>
                     <Route path='/grocerylist' component={this.props.token.token !== undefined ? () => <GroceryList/> : null}/>
+                    <Route path='/addrecipe' component={this.props.token.token !== undefined ? () => <Add page="recipe"/> : null}/>
+                    <Route path='/addmeal' component={this.props.token.token !== undefined ? () => <Add page="meal"/> : null}/>
+                    <Route path='/addmealplan' component={this.props.token.token !== undefined ? () => <Add page="mealplan"/> : null}/>
                     <Redirect to='/login'/>
                 </Switch>
                 <Footer login={this.props.token.token} handleClick={this.handleLogout}/>
