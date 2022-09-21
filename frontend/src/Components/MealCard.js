@@ -6,6 +6,7 @@ import Recipes from './Recipes';
 import * as actions from "../Redux/actionCreators"
 
 export default function MealCard({match}) {
+    const noAddCss = ".add-button {display: none}"
 
     const mealId = Number(match.params.mealId);
 
@@ -27,6 +28,7 @@ export default function MealCard({match}) {
         <div className="list-card-container">
             <h3 className='card-title'>{meal.title}</h3>
             <Recipes recipes={"meal"} mealId={mealId}/>
+            <style>{noAddCss}</style>
         </div>
     );
 }

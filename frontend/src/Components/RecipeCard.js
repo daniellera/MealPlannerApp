@@ -7,6 +7,8 @@ import thisRecipeImage from '../images/this_recipe_image.png';
 
 export default function RecipeCard({match}) {
 
+    const noAddCss = ".add-button {display: none}"
+
     const recipeId = Number(match.params.recipeId);
 
     const recipeList = useSelector(state =>
@@ -33,6 +35,7 @@ export default function RecipeCard({match}) {
             <br></br>
             <h4 className='recipe-subtitle'>Instructions: </h4>
             <p className='recipe-instructions'>{recipe.instructions}</p>
+            <style>{noAddCss}</style>
         </div>
     );
 }

@@ -37,6 +37,11 @@ export default function MealPlans(props) {
         <div className="list-card-container">
             <h5 className='page-title'>Meal Plans</h5>
             {mealPlanList}
+            <Link
+                to='/addmealplan'
+                className='add-button'
+                ><p>+ add</p>
+            </Link>
         </div>
     );
 }

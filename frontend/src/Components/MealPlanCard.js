@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Meals from './Meals';
 
 export default function MealPlanCard({match}) {
+    const noAddCss = ".add-button {display: none}"
 
     const mealPlanId = Number(match.params.mealPlanId);
 
@@ -12,6 +13,7 @@ export default function MealPlanCard({match}) {
 
     const mealPlan = mealPlanList.find(mealPlan => mealPlan.id === mealPlanId);
 
+    
 
     if (!mealPlan) {
         return (
@@ -25,6 +27,7 @@ export default function MealPlanCard({match}) {
         <div className="list-card-container">
             <h3 className='card-title'>{mealPlan.name}</h3>
             <Meals mealPlanId={mealPlanId} />
+            <style>{noAddCss}</style>
         </div>
     );
 }

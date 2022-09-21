@@ -51,6 +51,11 @@ export default function Recipes(props) {
     return (
         <div className="list-card-container">
             {recipeDisplay}
+            <Link
+                to='/addrecipe'
+                className='add-button'
+                ><p>+ add</p>
+            </Link>
         </div>
     );
 
