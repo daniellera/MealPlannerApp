@@ -116,7 +116,7 @@ export const deleteRecipe = (recipeId) => async (dispatch, getState) => {
 
 export const fetchRecipeIngredients = (recipeId) => async (dispatch, getState) => {
     const response = await Axios.get(
-        `${baseUrl}/ingredients/recipe/${recipeId}`, authHeaders()
+        `${baseUrl}/ingredients/recipe-${recipeId}`,
     )
     dispatch({
         type: ActionTypes.FETCH_RECIPE_INGREDIENTS,
